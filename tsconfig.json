@@ -14,13 +14,11 @@
     "target": "es2022",
     "jsx": "react-jsx",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@inbox/ui": ["packages/ui/src/index.ts"],
+      "@inbox/db": ["packages/db/src/index.ts"],
+      "@inbox/utils": ["packages/utils/src/index.ts"]
     },
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
     "esModuleInterop": true,
     "skipLibCheck": true,
     "sourceMap": true,
@@ -32,14 +30,13 @@
   },
   "include": [
     "next-env.d.ts",
-    "lib/**/*",
-    "app/**/*",
-    "scripts/**/*",
+    "apps/**/*",
+    "packages/**/*",
     "tests/**/*",
     "eslint.config.mjs",
     "drizzle.config.ts",
     "next.config.ts",
-    "vitest.config.ts",
+    "vitest.config.mts",
     "*.config.mjs",
     "*.config.ts",
     ".next/types/**/*.ts",

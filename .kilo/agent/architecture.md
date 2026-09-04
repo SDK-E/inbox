@@ -14,7 +14,7 @@ Analyze:
 1. **Source organization**: `app/` (routes), `lib/` (shared code), `tests/`, `scripts/`
 2. **Import boundaries**: server-only modules (`lib/db/`, `lib/env.ts`) must NOT be imported by client components
 3. **Dependency direction**: `app/` depends on `lib/`, never the reverse
-4. **Configuration**: `next.config.ts`, `drizzle.config.ts`, `eslint.config.mjs`, `vitest.config.ts`
+4. **Configuration**: `next.config.ts`, `drizzle.config.ts`, `eslint.config.mjs`, `vitest.config.mts`
 5. **Security**: no secrets in source, env validation at startup, Zod at boundaries
 
 Report:

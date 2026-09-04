@@ -54,6 +54,10 @@ pnpm module-graph   # dependency-cruiser — cycles & boundary violations
 pnpm readability    # both at once (CI gate)
 ```
 
+## Online Documentation Research
+
+Before implementing anything involving packages, APIs, configuration, or tooling behavior, always search online for official documentation or known solutions. This includes warnings, deprecation notices, errors, and unfamiliar behavior. Prefer upstream fixes over local workarounds.
+
 ## Code
 
 Use Server Components by default. Add `"use client"` only when browser interaction requires it.
@@ -64,7 +68,7 @@ Validate untrusted input with Zod at boundaries.
 
 Strict TypeScript only. No `any`, `@ts-ignore`, `@ts-nocheck`, unnecessary casts/non-null assertions, swallowed errors, or disabled lint rules.
 
-Prefer small, explicit, readable code. Reuse existing patterns. Privilege Opensource Packages (Use Browser tools to research online) to writing code. Avoid speculative abstractions, wrappers, factories, and unnecessary indirection.
+Before writing any code, search for an existing package or utility that solves the problem. Do not reinvent the wheel. Prefer well-maintained open source packages over custom implementations unless the requirement is truly unique or a dependency cannot be justified.
 
 Before adding dependencies, verify they are needed, current, maintained, and compatible.
 
@@ -128,6 +132,10 @@ Then inspect `git diff`.
 Do not finish with introduced lint/type/test/build failures, unrelated edits, debug code, stale docs, or suppressed errors.
 
 Never claim verification you did not actually perform.
+
+## Warnings
+
+`pnpm check`, `pnpm test`, `pnpm build`, and `pnpm install` must produce zero warnings. Deprecation warnings, peer dependency warnings, and tooling warnings are treated as failures. Update dependencies or configuration to remove warnings rather than suppressing them.
 
 ## Skills
 

@@ -6,9 +6,18 @@
     ".kilocode/**",
     ".kiro/**",
     ".kilo/**",
-    ".qwen/**"
+    ".qwen/**",
+    "packages/config/eslint/eslint.config.mjs",
+    "packages/config/prettier.config.mjs"
   ],
-  "ignoreDependencies": ["repomix"],
+  "ignoreBinaries": ["next"],
+  "ignoreDependencies": [
+    "repomix",
+    "dependency-cruiser",
+    "tsx",
+    "@eslint/eslintrc",
+    "eslint-config-next"
+  ],
   "ignoreExportsUsedInFile": true,
   "includeEntryExports": false,
   "next": true,
