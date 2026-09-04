@@ -1,26 +1,18 @@
-import "server-only";
 import { z } from "zod";
 
-const schema = z.object({
-  NODE_ENV: z
-    .enum(["development", "production", "test"])
-    .default("development"),
-  DATABASE_URL: z.string().optional(),
-  DATABASE_URL_UNPOOLED: z.string().optional(),
+const publicSchema = z.object({
+  NEXT_PUBLIC_APP_URL: z.url(),
+});
+
+const serverSchema = z.object({
+  DATABASE_URL: z.url().optional(),
+  DATABASE_URL_UNPOOLED: z.url().optional(),
   BROWSERBASE_API_KEY: z.string().optional(),
   BROWSERBASE_PROJECT_ID: z.string().optional(),
 });
 
-export type Env = z.infer<typeof schema>;
+export type PublicEnv = z.infer<typeof publicSchema>;
+export type ServerEnv = z.infer<typeof serverSchema>;
 
-function validateEnv(): Env {
-  const parsed = schema.safeParse(process.env);
-  if (!parsed.success) {
-    const issues = z.treeifyError(parsed.error);
-    console.error("Environment validation failed:", issues);
-    throw new Error("Invalid environment configuration");
-  }
-  return parsed.data;
-}
-
-export const env = validateEnv();
+export const publicEnv = publicSchema.parse(process.env);
+export const serverEnv = serverSchema.parse(process.env);
