@@ -14,19 +14,19 @@ Inbox brings multiple email accounts into a single fast, keyboard-first workspac
 
 ## Features
 
-* Multiple accounts with a unified inbox
-* Real IMAP folder hierarchy
-* Threaded or individual message views
-* Rich text, Markdown, and plain-text composition
-* Multiple sending identities
-* Draft autosave
-* Contacts and recipient autocomplete
-* Advanced search and filtering
-* Scheduled sending and snooze
-* Mail rules and automation
-* Bulk actions and keyboard shortcuts
-* Responsive three-column interface
-* Light and dark themes
+- Multiple accounts with a unified inbox
+- Real IMAP folder hierarchy
+- Threaded or individual message views
+- Rich text, Markdown, and plain-text composition
+- Multiple sending identities
+- Draft autosave
+- Contacts and recipient autocomplete
+- Advanced search and filtering
+- Scheduled sending and snooze
+- Mail rules and automation
+- Bulk actions and keyboard shortcuts
+- Responsive three-column interface
+- Light and dark themes
 
 ## Stack
 

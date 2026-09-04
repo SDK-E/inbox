@@ -62,7 +62,7 @@ export default function Home() {
           </p>
 
           <div className="mt-12 flex max-w-3xl flex-wrap gap-2">
-            {features.map((feature) => (
+            {features.map(feature => (
               <span
                 key={feature}
                 className="rounded-md border border-[#d7e8d3] px-3 py-2 text-xs dark:border-[#1c3317]"
