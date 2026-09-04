@@ -2,46 +2,42 @@
 
 Concise ownership reference. Update when files, directories, or responsibilities move. Mirrors `docs/architecture.md`.
 
-## `app/`
+## `apps/web/`
 
-- `app/layout.tsx` — root layout, font loading, global metadata.
-- `app/page.tsx` — landing page.
-- `app/globals.css` — Tailwind layers and base styles.
-- `app/api/health/` — health-check API route surface (empty until a `route.ts` is added).
+- `apps/web/app/layout.tsx` — root layout, font loading, global metadata.
+- `apps/web/app/page.tsx` — landing page.
+- `apps/web/app/globals.css` — Tailwind layers and base styles.
+- `apps/web/app/api/health/` — health-check API route surface (empty until a `route.ts` is added).
 
-## `scripts/`
+## `apps/web/tests/`
 
-- `scripts/verify-browser.ts` — starts `pnpm dev`, opens the homepage with Playwright, fails on console or page errors.
-- `scripts/snapshot.ts` — wraps `repomix` and forwards arguments and exit code.
-- `scripts/dead-code.ts` — wraps `knip` and forwards arguments and exit code.
-- `scripts/module-graph.ts` — wraps `dependency-cruiser` and forwards arguments and exit code.
+- `apps/web/tests/setup.ts` — Vitest setup, registers `@testing-library/jest-dom` matchers.
+- `apps/web/tests/unit/smoke.test.ts` — Zod schema smoke test.
+- `apps/web/tests/e2e/homepage.spec.ts` — Playwright test that the landing page renders `<main>`.
 
-## `tests/`
-
-- `tests/setup.ts` — Vitest setup, registers `@testing-library/jest-dom` matchers.
-- `tests/unit/smoke.test.ts` — Zod schema smoke test.
-- `tests/e2e/homepage.spec.ts` — Playwright test that the landing page renders `<main>`.
-
-## `public/`
+## `apps/web/public/`
 
 Static SVG assets used by the landing page. Not analyzed by lint, type-check, or readability tools.
 
-## `docs/`
+## `packages/`
 
-- `docs/branding.md` — SDK Enterprises brand guidelines (canonical reference for UI work).
-- `docs/architecture.md` — module boundaries, runtime topology, configuration surfaces.
-- `docs/code-map.md` — this file.
+- `packages/ui/` — shared UI component library.
+- `packages/db/` — database schema, queries, and migrations.
+- `packages/utils/` — shared utility functions.
+- `packages/config/` — shared ESLint, TypeScript, Tailwind, and tooling configs.
 
-## Configs (root)
+## Configs (root / package-scoped)
 
-- `next.config.ts` — Next configuration: standalone output, security headers.
-- `tsconfig.json` — strict TypeScript with `@/*` path alias.
-- `eslint.config.mjs` — flat ESLint config: type-aware TS, sonar, unicorn, import restrictions.
-- `vitest.config.ts` — Vitest configuration (jsdom).
-- `playwright.config.ts` — Playwright configuration (Chromium, dev-server reuse).
-- `postcss.config.mjs` — Tailwind 4 PostCSS plugin.
-- `prettier.config.mjs` — Prettier formatting rules.
-- `repomix.config.json` — single-file codebase snapshot.
+- `turbo.json` — Turborepo task pipeline.
+- `pnpm-workspace.yaml` — workspace globs.
+- `tsconfig.json` — root TypeScript config with path aliases for workspaces.
+- `apps/web/tsconfig.json` — app-specific TS overrides.
+- `apps/web/eslint.config.mjs` — flat ESLint config with Next.js plugin.
+- `apps/web/vitest.config.ts` — Vitest configuration (jsdom).
+- `apps/web/playwright.config.ts` — Playwright configuration (Chromium, dev-server reuse).
+- `apps/web/postcss.config.mjs` — Tailwind 4 PostCSS plugin.
+- `apps/web/prettier.config.mjs` — Prettier formatting rules.
+- `packages/config/repomix.config.json` — single-file codebase snapshot.
 - `knip.json` — dead-code detection.
 - `.dependency-cruiser.cjs` — module boundary and cycle enforcement.
 

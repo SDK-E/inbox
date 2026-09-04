@@ -8,52 +8,54 @@ This document describes the module boundaries, ownership, and runtime topology o
 - Tailwind 4 for styling.
 - Vitest for unit tests; Playwright for e2e.
 - Readability tooling: `repomix`, `knip`, `dependency-cruiser`.
+- Turborepo for task orchestration across workspaces.
 
 ## Top-Level Layout
 
 ```
-app/      Next.js App Router entry points (pages, layouts, API routes)
-scripts/  Node-runnable maintenance and verification scripts
-tests/    Unit (Vitest) and end-to-end (Playwright) tests
-public/   Static assets served at the site root
-docs/     Long-form documentation, including this file
+apps/web/     Next.js application (routes, layouts, pages, styles, tests, public)
+packages/     Internal libraries (ui, db, utils, config)
+docs/         Long-form documentation, including this file
 ```
 
-`lib/` does not currently contain runtime modules — it was previously used for shared server modules (env, db) but is intentionally empty until the first server-side module is added. Add a `lib/<domain>/` subdirectory per concern (e.g. `lib/env/`, `lib/db/`) and re-export from `lib/<domain>/index.ts` when that domain appears.
+`packages/ui/`, `packages/db/`, `packages/utils/` are internal libraries. `packages/config/` holds shared tooling configs.
 
 ## Runtime Topology
 
-- **Browser** loads pages from `app/page.tsx`, `app/layout.tsx`, and any future route segments.
-- **Server** is driven by `next dev` / `next start`. Server-only code is restricted to `app/api/**` and any future `lib/<server-only>/` modules. Use `import "server-only"` to mark such modules.
-- **Tests** run in jsdom for unit tests and a real Chromium instance for e2e (`tests/e2e/`). The e2e config (`playwright.config.ts`) starts `pnpm dev` automatically and targets `http://localhost:3000`.
+- **Browser** loads pages from `apps/web/app/page.tsx`, `apps/web/app/layout.tsx`, and any future route segments.
+- **Server** is driven by `next dev` / `next start`. Server-only code is restricted to `apps/web/app/api/**` and any future `packages/db/` modules. Use `import "server-only"` to mark such modules.
+- **Tests** run in jsdom for unit tests and a real Chromium instance for e2e (`apps/web/tests/e2e/`). The e2e config (`apps/web/playwright.config.ts`) starts `pnpm dev` automatically and targets `http://localhost:3000`.
 
 ## Boundaries
 
-- `app/**/page.tsx`, `app/**/layout.tsx`, and other UI files must not import server-only modules (e.g. `lib/db/`, `lib/env/`). Use API routes (`app/api/**/route.ts`) or server actions for server-side work.
-- `app/api/**` is the only place allowed to import server-only database modules. This is enforced by both `eslint-plugin-import-x/no-restricted-paths` and `dependency-cruiser`.
-- Tests under `tests/unit/**` execute in jsdom and may not import server modules. Tests under `tests/e2e/**` execute against a real dev server.
+- `apps/web/app/**/page.tsx`, `apps/web/app/**/layout.tsx`, and other UI files must not import server-only modules (e.g. `packages/db/`). Use API routes (`apps/web/app/api/**/route.ts`) or server actions for server-side work.
+- `apps/web/app/api/**` is the only place allowed to import server-only database modules. This is enforced by both `eslint-plugin-import-x/no-restricted-paths` and `dependency-cruiser`.
+- Tests under `apps/web/tests/unit/**` execute in jsdom and may not import server modules. Tests under `apps/web/tests/e2e/**` execute against a real dev server.
 - Agent/tooling metadata under `.agents/`, `.claude/`, `.kilocode/`, `.kiro/`, `.kilo/`, `.qwen/` is excluded from lint, type-check, and readability scans.
 
 ## Dependency Direction
 
 ```
-app → lib (UI may import pure helpers only)
-app/api → lib (server modules allowed)
-scripts → anything (intentionally unrestricted; run via tsx)
-tests → app, lib (mirrors consumer behavior)
+apps/web → packages/ui, packages/utils
+apps/web/app/api → packages/db
+packages/ui → packages/utils (if needed)
+packages/db → packages/utils (if needed)
 ```
 
 Cycles and runtime cycles are forbidden (`dependency-cruiser`). Orphans — files not reachable from any entry — are forbidden (`dependency-cruiser`, `knip`).
 
 ## Configuration Surfaces
 
-- `next.config.ts` — Next.js configuration, security headers, standalone output.
-- `tsconfig.json` — strict TypeScript with `@/*` path alias, Next.js plugin.
-- `eslint.config.mjs` — flat config: type-aware strict TS, sonar, unicorn, import restrictions.
-- `vitest.config.ts` — jsdom environment, `tests/setup.ts` wires `@testing-library/jest-dom`.
-- `playwright.config.ts` — Chromium project, reuses running dev server locally.
-- `tailwindcss` + `postcss.config.mjs` — Tailwind 4 via PostCSS.
-- `repomix.config.json` — single-file codebase snapshot for agents.
+- `turbo.json` — Turborepo task pipeline.
+- `pnpm-workspace.yaml` — workspace globs.
+- `tsconfig.json` — root TypeScript config with path aliases for workspaces.
+- `apps/web/tsconfig.json` — app-specific TS overrides.
+- `apps/web/eslint.config.mjs` — flat ESLint config with Next.js plugin.
+- `apps/web/vitest.config.ts` — Vitest configuration (jsdom).
+- `apps/web/playwright.config.ts` — Playwright configuration (Chromium, dev-server reuse).
+- `apps/web/postcss.config.mjs` — Tailwind 4 PostCSS plugin.
+- `apps/web/prettier.config.mjs` — Prettier formatting rules.
+- `packages/config/repomix.config.json` — single-file codebase snapshot.
 - `knip.json` — dead-file, dead-export, dead-dependency detection.
 - `.dependency-cruiser.cjs` — module boundary and cycle enforcement.
 
