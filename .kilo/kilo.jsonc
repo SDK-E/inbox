@@ -1,0 +1,21 @@
+{
+  "$schema": "https://app.kilo.ai/config.json",
+  "mcp": {
+    "context7": {
+      "type": "remote",
+      "url": "https://mcp.context7.com/mcp",
+      "enabled": true,
+      "timeout": 10000,
+    },
+    "next-devtools": {
+      "type": "local",
+      "command": ["npx", "-y", "next-devtools-mcp@latest"],
+      "enabled": true,
+      "timeout": 10000,
+    },
+  },
+  "permission": {
+    "context7_*": "allow",
+    "next_devtools_*": "allow",
+  },
+}
