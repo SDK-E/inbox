@@ -134,3 +134,19 @@ Never claim verification you did not actually perform.
 Before substantive work, inspect available skills and load all skills relevant to the task before planning or implementation.
 
 Do not rely on memory when an applicable skill exists.
+
+## Knip
+
+Use Knip as the source of truth for dead files, unused exports, and unused dependencies.
+
+Before creating a new helper, export, file, or dependency, check whether an existing one already exists and is used.
+
+After structural changes, dependency changes, refactors, or file moves, run:
+
+```bash
+pnpm dead-code
+```
+
+Treat unexplained Knip findings as defects. Do not silence them with broad ignores, fake imports, dummy exports, or config exclusions just to get green output.
+
+Only add a Knip ignore when the item is genuinely runtime-discovered/generated/tooling-only and document the reason narrowly.
