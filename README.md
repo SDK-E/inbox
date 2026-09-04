@@ -1,48 +1,69 @@
-# Inbox
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./public/logo-dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="./public/logo-light.png">
+    <img alt="Inbox" src="./public/logo-light.png" width="420">
+  </picture>
+</p>
 
-Foundation for a Next.js 16 application using React 19, strict TypeScript, Tailwind CSS 4, Neon PostgreSQL, and Drizzle ORM.
+<p align="center">
+  A modern webmail client for SDK Enterprises.
+</p>
 
-## Setup
+Inbox brings multiple email accounts into a single fast, keyboard-first workspace with unified mail, real IMAP folders, threaded conversations, powerful search, contacts, scheduling, snooze, rules, and flexible composition.
+
+## Features
+
+* Multiple accounts with a unified inbox
+* Real IMAP folder hierarchy
+* Threaded or individual message views
+* Rich text, Markdown, and plain-text composition
+* Multiple sending identities
+* Draft autosave
+* Contacts and recipient autocomplete
+* Advanced search and filtering
+* Scheduled sending and snooze
+* Mail rules and automation
+* Bulk actions and keyboard shortcuts
+* Responsive three-column interface
+* Light and dark themes
+
+## Stack
+
+Next.js 16 · React 19 · TypeScript · Tailwind CSS 4 · Neon · Drizzle · Vitest · Playwright · Stagehand
+
+## Quick Start
 
 ```bash
 cp .env.example .env.local
 pnpm install
+pnpm dev
 ```
 
-## Required environment variables
+Open `http://localhost:3000`.
 
-See `.env.example`. At minimum, provide:
-
-- `NEXT_PUBLIC_APP_URL` — public base URL (required)
-- `DATABASE_URL` — Neon pooled connection string (optional until DB features are used)
-
-## Commands
+## Development
 
 ```bash
-pnpm dev        # start development server
-pnpm check      # lint + typecheck
-pnpm test       # run unit tests
-pnpm verify     # run browser verification
-pnpm build      # production build
+pnpm check
+pnpm test
+pnpm verify
+pnpm build
 ```
 
 Database tooling:
 
 ```bash
-pnpm db:generate   # generate drizzle migrations
-pnpm db:migrate    # apply migrations
-pnpm db:push       # push schema directly (dev only)
-pnpm db:studio     # open drizzle studio
+pnpm db:generate
+pnpm db:migrate
+pnpm db:push
+pnpm db:studio
 ```
 
-## Database migration workflow
+## Documentation
 
-1. Edit `lib/db/schema.ts`.
-2. Run `pnpm db:generate`.
-3. Review the generated SQL in `drizzle/migrations/`.
-4. Run `pnpm db:migrate` to apply.
+Architecture, development workflows, database conventions, testing, and implementation details live in [`docs/`](./docs/).
 
-## Testing / verification
+## License
 
-- Unit tests: `pnpm test` (Vitest)
-- Browser verification: `pnpm verify` (Playwright, starts dev server automatically)
+Proprietary software. © SDK Enterprises.
