@@ -34,6 +34,26 @@ Before editing:
 
 Do not code from assumptions. Prefer repository evidence, current docs, tests, and the running app.
 
+## Pre-Work Search (Codebase Readability)
+
+Before any substantial implementation, refactor, or debugging session, do all of:
+
+- **Targeted repo search** — use `grep`/`glob`/semantic_search to find existing utilities, types, schemas, components, and patterns relevant to the task. Read every plausible match before writing new code.
+- **Dependency inspection** — review `package.json`, `pnpm-lock.yaml`, and any installed package's `node_modules/<pkg>/` to confirm current APIs and version-specific behavior. Never rely on training data for current library usage.
+- **Nearby tests** — read `tests/**` adjacent to the area being changed. Mirror existing test style and add regression coverage for behavior changes.
+- **Relevant architecture docs** — consult `docs/architecture.md` and `docs/code-map.md` for module boundaries, conventions, and ownership before creating new abstractions or splitting/reorganizing code.
+
+If the existing tools (`repomix`, `knip`, `dependency-cruiser`) suggest a contradiction with `docs/architecture.md` or `docs/code-map.md`, the docs are wrong until proven otherwise — update them in the same change.
+
+Run the readability tools when the change touches module boundaries, dead code, or dependency surface:
+
+```bash
+pnpm snapshot       # generate repomix-output.md for context dumps
+pnpm dead-code      # knip — unused files/exports/deps
+pnpm module-graph   # dependency-cruiser — cycles & boundary violations
+pnpm readability    # both at once (CI gate)
+```
+
 ## Code
 
 Use Server Components by default. Add `"use client"` only when browser interaction requires it.
@@ -94,6 +114,7 @@ Before declaring work complete:
 pnpm check
 pnpm test
 pnpm build
+pnpm readability   # when module boundaries or dead code are in scope
 ```
 
 For UI changes:
@@ -107,3 +128,9 @@ Then inspect `git diff`.
 Do not finish with introduced lint/type/test/build failures, unrelated edits, debug code, stale docs, or suppressed errors.
 
 Never claim verification you did not actually perform.
+
+## Skills
+
+Before substantive work, inspect available skills and load all skills relevant to the task before planning or implementation.
+
+Do not rely on memory when an applicable skill exists.

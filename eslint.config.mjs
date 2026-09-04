@@ -26,6 +26,9 @@ export default defineConfig([
     ".kilo/skills/**",
     ".qwen/**",
     "skills-lock.json",
+    ".dependency-cruiser.cjs",
+    "repomix.config.json",
+    "repomix-output.md",
   ]),
 
   // Next.js: React, JSX, a11y, Core Web Vitals, Next.js-specific rules
