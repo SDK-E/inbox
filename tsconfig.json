@@ -13,14 +13,10 @@
     "module": "esnext",
     "target": "es2022",
     "jsx": "react-jsx",
-    "baseUrl": ".",
     "paths": {
       "@/*": ["./*"]
     },
     "plugins": [
-      {
-        "name": "tsconfig-paths"
-      },
       {
         "name": "next"
       }
