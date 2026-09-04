@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Inbox
 
-## Getting Started
+Foundation for a Next.js 16 application using React 19, strict TypeScript, Tailwind CSS 4, Neon PostgreSQL, and Drizzle ORM.
 
-First, run the development server:
+## Setup
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cp .env.example .env.local
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Required environment variables
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+See `.env.example`. At minimum, provide:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `NEXT_PUBLIC_APP_URL` — public base URL (required)
+- `DATABASE_URL` — Neon pooled connection string (optional until DB features are used)
 
-## Learn More
+## Commands
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+pnpm dev        # start development server
+pnpm check      # lint + typecheck
+pnpm test       # run unit tests
+pnpm verify     # run browser verification
+pnpm build      # production build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Database tooling:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+pnpm db:generate   # generate drizzle migrations
+pnpm db:migrate    # apply migrations
+pnpm db:push       # push schema directly (dev only)
+pnpm db:studio     # open drizzle studio
+```
 
-## Deploy on Vercel
+## Database migration workflow
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Edit `lib/db/schema.ts`.
+2. Run `pnpm db:generate`.
+3. Review the generated SQL in `drizzle/migrations/`.
+4. Run `pnpm db:migrate` to apply.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Testing / verification
+
+- Unit tests: `pnpm test` (Vitest)
+- Browser verification: `pnpm verify` (Playwright, starts dev server automatically)
