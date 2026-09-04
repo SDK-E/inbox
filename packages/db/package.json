@@ -1,0 +1,12 @@
+{
+  "name": "@inbox/db",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "check": "echo 'no check needed'",
+    "lint": "echo 'no lint needed'",
+    "typecheck": "echo 'no typecheck needed'"
+  }
+}

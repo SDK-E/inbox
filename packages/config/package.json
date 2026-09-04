@@ -1,0 +1,14 @@
+{
+  "name": "@inbox/config",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./eslint/index.mjs",
+  "exports": {
+    "./eslint": "./eslint/index.mjs"
+  },
+  "scripts": {
+    "check": "echo 'no check needed'",
+    "lint": "echo 'no lint needed'",
+    "typecheck": "echo 'no typecheck needed'"
+  }
+}
