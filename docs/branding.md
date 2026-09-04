@@ -95,12 +95,14 @@ Typography should feel compact and intentional rather than oversized.
 Use the official SDK Enterprises logo assets already provided by the project or central brand repository.
 
 Expected variants:
+
 - light logo;
 - dark logo;
 - standalone mark;
 - favicon/app icon.
 
 Rules:
+
 - Never redraw the logo.
 - Never stretch or distort it.
 - Never rotate it.
@@ -167,6 +169,7 @@ Use one consistent icon family per product.
 Preferred default: **Lucide**
 
 Rules:
+
 - Keep icon weight visually consistent.
 - Common action icons: 16–18px.
 - Pair unfamiliar icons with labels.
@@ -234,6 +237,7 @@ Target WCAG 2.2 AA.
 Brand consistency never overrides accessibility.
 
 Requirements:
+
 - sufficient text contrast;
 - visible keyboard focus;
 - semantic HTML;
