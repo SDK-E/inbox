@@ -18,6 +18,14 @@ export default defineConfig([
     "next-env.d.ts",
     "drizzle/migrations/**",
     "node_modules/**",
+    ".agents/**",
+    ".claude/**",
+    ".kilocode/**",
+    ".kiro/**",
+    ".kilo/**",
+    ".kilo/skills/**",
+    ".qwen/**",
+    "skills-lock.json",
   ]),
 
   // Next.js: React, JSX, a11y, Core Web Vitals, Next.js-specific rules
@@ -75,6 +83,7 @@ export default defineConfig([
         },
       ],
       "import-x/no-cycle": ["warn", { maxDepth: 1 }],
+      "import-x/no-relative-parent-imports": "error",
       "import-x/no-restricted-paths": [
         "error",
         {

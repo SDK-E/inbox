@@ -1,0 +1,31 @@
+# AI / agent support directories
+.agents/
+.claude/
+.kilocode/
+.kiro/
+.kilo/
+.qwen/
+
+# Tooling metadata
+skills-lock.json
+
+# Build / cache / results
+.next/
+out/
+build/
+dist/
+coverage/
+test-results/
+playwright-report/
+node_modules/
+
+# Env / secrets
+.env*
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Drizzle
+drizzle/migrations/.tmp

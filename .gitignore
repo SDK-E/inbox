@@ -9,9 +9,19 @@
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
+.next/
+out/
+build/
+dist/
+coverage/
+test-results/
+playwright-report/
+node_modules/
 
 # testing
 /coverage
+/test-results
+/playwright-report
 
 # next.js
 /.next/
@@ -30,8 +40,12 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
+# Drizzle
+drizzle/migrations/.tmp
+
 # env files (can opt-in for committing if needed)
 .env*
+.vercel*
 
 # vercel
 .vercel
@@ -42,3 +56,6 @@ next-env.d.ts
 
 # drizzle
 /drizzle/migrations/.tmp
+
+# Tooling metadata
+skills-lock.json
