@@ -1,6 +1,6 @@
 "use client";
 
-import { X } from "lucide-react";
+import { Mail, X } from "lucide-react";
 import { Moon, Sun, SunMoon } from "lucide-react";
 
 import { Button } from "@inbox/ui/ui/button";
@@ -17,6 +17,7 @@ interface TopBarProps {
   onCommandOpen?: () => void;
   onMobileNavOpen: () => void;
   onCloseReader?: () => void;
+  onOpenReader?: () => void;
   readerVisible?: boolean;
 }
 
@@ -24,6 +25,7 @@ export function TopBar({
   onCommandOpen,
   onMobileNavOpen,
   onCloseReader,
+  onOpenReader,
   readerVisible,
 }: TopBarProps) {
   return (
@@ -44,6 +46,17 @@ export function TopBar({
       </div>
 
       <div className="flex items-center gap-1">
+        {!readerVisible && onOpenReader && (
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-8 w-8"
+            onClick={onOpenReader}
+            aria-label="Open reader"
+          >
+            <Mail className="h-4 w-4" />
+          </Button>
+        )}
         {readerVisible && onCloseReader && (
           <Button
             variant="ghost"

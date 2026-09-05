@@ -104,20 +104,17 @@ function AccountsSection({
   return (
     <SidebarGroup>
       <SidebarGroupLabel>Accounts</SidebarGroupLabel>
-      <SidebarGroupAction>
-        <button
-          type="button"
-          onClick={onToggleAccounts}
-          aria-expanded={accountsOpen}
-          className="rounded p-0.5 text-muted-foreground hover:text-foreground hover:bg-accent"
-        >
-          <Plus
-            className="h-3 w-3 transition-transform"
-            style={{
-              transform: accountsOpen ? "rotate(45deg)" : "rotate(0)",
-            }}
-          />
-        </button>
+      <SidebarGroupAction
+        onClick={onToggleAccounts}
+        aria-expanded={accountsOpen}
+        className="rounded p-0.5 text-muted-foreground hover:text-foreground hover:bg-accent"
+      >
+        <Plus
+          className="h-3 w-3 transition-transform"
+          style={{
+            transform: accountsOpen ? "rotate(45deg)" : "rotate(0)",
+          }}
+        />
       </SidebarGroupAction>
       <SidebarGroupContent>
         {accountsOpen && (

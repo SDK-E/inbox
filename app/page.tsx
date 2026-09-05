@@ -34,22 +34,16 @@ function AuthSection() {
   const router = useRouter();
 
   if (loading) {
-    return (
-      <span className="text-xs text-[#4c5f48] dark:text-[#9bb397]">
-        Loading...
-      </span>
-    );
+    return <span className="text-xs text-muted-foreground">Loading...</span>;
   }
 
   if (user) {
     return (
       <div className="flex items-center gap-4">
-        <span className="text-xs text-[#4c5f48] dark:text-[#9bb397]">
-          {user.email}
-        </span>
+        <span className="text-xs text-muted-foreground">{user.email}</span>
         <Link
           href="/dashboard"
-          className="rounded-md bg-[#082003] px-4 py-2 text-xs text-white dark:bg-[#f2f8f0] dark:text-[#082003]"
+          className="rounded-md bg-primary px-4 py-2 text-xs text-primary-foreground"
         >
           Open Inbox
         </Link>
@@ -58,7 +52,7 @@ function AuthSection() {
           onClick={() => {
             router.push("/logout");
           }}
-          className="text-xs text-[#4c5f48] underline dark:text-[#9bb397]"
+          className="text-xs text-muted-foreground underline"
         >
           Sign out
         </button>
@@ -69,7 +63,7 @@ function AuthSection() {
   return (
     <Link
       href="/login"
-      className="rounded-md bg-[#082003] px-4 py-2 text-xs text-white dark:bg-[#f2f8f0] dark:text-[#082003]"
+      className="rounded-md bg-primary px-4 py-2 text-xs text-primary-foreground"
     >
       Sign in
     </Link>
@@ -97,7 +91,7 @@ export default function Home() {
 
       <section className="flex flex-1 items-center px-6 py-16 sm:px-10 lg:px-16">
         <div className="w-full max-w-5xl">
-          <p className="mb-5 text-sm font-medium text-[#239f14] dark:text-[#2cdb16]">
+          <p className="mb-5 text-sm font-medium text-primary">
             Your mail. One place.
           </p>
 
@@ -105,7 +99,7 @@ export default function Home() {
             A faster way to work with email.
           </h1>
 
-          <p className="mt-7 max-w-2xl text-base leading-7 text-[#4c5f48] dark:text-[#9bb397] sm:text-lg">
+          <p className="mt-7 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
             Multiple accounts, one inbox, real mailbox folders and the tools
             needed to manage email without jumping between services.
           </p>
@@ -114,7 +108,7 @@ export default function Home() {
             {features.map(feature => (
               <span
                 key={feature}
-                className="rounded-md border border-[#d7e8d3] px-3 py-2 text-xs dark:border-[#1c3317]"
+                className="rounded-md border border-border px-3 py-2 text-xs"
               >
                 {feature}
               </span>
@@ -123,7 +117,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="flex items-center justify-between border-t border-[#d7e8d3] px-6 py-5 text-xs text-[#4c5f48] dark:border-[#1c3317] dark:text-[#9bb397] sm:px-10 lg:px-16">
+      <footer className="flex items-center justify-between border-t border-border px-6 py-5 text-xs text-muted-foreground sm:px-10 lg:px-16">
         <span>Inbox</span>
         <span>SDK Enterprises</span>
       </footer>

@@ -34,6 +34,9 @@ export function AppShell({ children }: { children?: React.ReactNode }) {
         onCloseReader={() => {
           setReaderVisible(false);
         }}
+        onOpenReader={() => {
+          setReaderVisible(true);
+        }}
       >
         {children}
       </DesktopShell>
@@ -44,10 +47,12 @@ export function AppShell({ children }: { children?: React.ReactNode }) {
 function DesktopShell({
   readerVisible,
   onCloseReader,
+  onOpenReader,
   children,
 }: {
   readerVisible: boolean;
   onCloseReader: () => void;
+  onOpenReader: () => void;
   children?: React.ReactNode;
 }) {
   return (
@@ -57,6 +62,7 @@ function DesktopShell({
           return undefined;
         }}
         onCloseReader={onCloseReader}
+        onOpenReader={onOpenReader}
         readerVisible={readerVisible}
       />
       <div className="flex flex-1 overflow-hidden">
