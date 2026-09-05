@@ -23,8 +23,8 @@
     "module-graph": "depcruise --config .dependency-cruiser.cjs .",
     "readability": "pnpm dead-code && pnpm module-graph",
     "db:generate": "DOTENV_CONFIG_PATH=/dev/null drizzle-kit generate",
-    "db:migrate": "DOTENV_CONFIG_PATH=/dev/null drizzle-kit migrate",
-    "db:push": "DOTENV_CONFIG_PATH=/dev/null drizzle-kit push"
+    "db:push": "DOTENV_CONFIG_PATH=/dev/null drizzle-kit push",
+    "db:migrate": "DOTENV_CONFIG_PATH=/dev/null drizzle-kit migrate"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",
