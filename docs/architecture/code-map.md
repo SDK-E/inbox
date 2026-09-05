@@ -31,6 +31,7 @@ Owns:
 - migrations.
 - server-only DB client/query helpers.
 - DB-specific tests.
+- Mail account adapters, crypto, and queries (`packages/db/src/mail/`).
 
 Never imported into client code.
 

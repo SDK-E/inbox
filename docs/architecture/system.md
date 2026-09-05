@@ -34,6 +34,16 @@ Do not create empty packages or speculative layers.
 - SMTP/provider sending: outbound email transport.
 - Upstash/QStash/Redis: only when scheduling/queue/rate requirements concretely justify it.
 
+## Mail account management
+
+Account connection flows, validation, and lifecycle live in `app/actions/mail-accounts.ts` and `packages/db/src/mail/`.
+
+- Connection verification is limited to IMAP/SMTP handshake + mailbox listing. No message sync yet.
+- Provider-specific details are confined to small adapter functions in `packages/db/src/mail/adapters.ts`.
+- Secrets are encrypted with AES-256-GCM before storage and decrypted only in server actions.
+- Failure states are explicit: `disconnected`, `connected`, `error`, with `last_error` captured.
+- Default account behavior is enforced at the query layer; UI reflects default status only.
+
 ## Mail synchronization
 
 Synchronization must be incremental, idempotent, retryable, and safe under duplicate execution. Avoid loading full mailboxes into memory.

@@ -1,0 +1,23 @@
+CREATE TABLE "mailbox_connections" (
+	"id" text PRIMARY KEY NOT NULL,
+	"user_id" text NOT NULL,
+	"organization_id" text NOT NULL,
+	"provider" text NOT NULL,
+	"email" text NOT NULL,
+	"display_name" text,
+	"status" text DEFAULT 'disconnected' NOT NULL,
+	"imap_host" text,
+	"imap_port" integer,
+	"smtp_host" text,
+	"smtp_port" integer,
+	"oauth_provider" text,
+	"encrypted_credentials" text,
+	"oauth_refresh_token" text,
+	"oauth_access_token" text,
+	"oauth_expires_at" timestamp,
+	"last_error" text,
+	"is_default" boolean DEFAULT false NOT NULL,
+	"created_at" timestamp DEFAULT now() NOT NULL,
+	"updated_at" timestamp DEFAULT now() NOT NULL,
+	"last_validated_at" timestamp
+);
