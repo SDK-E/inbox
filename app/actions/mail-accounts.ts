@@ -124,5 +124,12 @@ export async function setDefaultMailAccount(id: string) {
 }
 
 export async function listMailAccounts() {
-  return getMailboxConnectionsByUserId("user_1");
+  try {
+    return await getMailboxConnectionsByUserId("user_1");
+  } catch (error) {
+    if (error instanceof Error && error.message.includes("DATABASE_URL")) {
+      return [];
+    }
+    throw error;
+  }
 }

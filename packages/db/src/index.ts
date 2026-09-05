@@ -8,8 +8,13 @@ let dbInstance: ReturnType<typeof drizzle> | null = null;
 
 export function getDb(): ReturnType<typeof drizzle> {
   if (!dbInstance) {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    dbInstance = drizzle(neon(process.env["DATABASE_URL"]!));
+    const databaseUrl = process.env["DATABASE_URL"];
+    if (!databaseUrl) {
+      throw new Error(
+        "DATABASE_URL is not configured. Add it to your environment before using database features.",
+      );
+    }
+    dbInstance = drizzle(neon(databaseUrl));
   }
   return dbInstance;
 }
