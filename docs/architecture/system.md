@@ -27,7 +27,7 @@ Do not create empty packages or speculative layers.
 
 ## Core integrations
 
-- WorkOS AuthKit: auth/session/org/roles groundwork.
+- WorkOS AuthKit: auth/session/org/roles groundwork via composable proxy, callback/login/logout routes, `AuthKitProvider`, `withAuth`, and `useAuth`.
 - Neon PostgreSQL: durable application-owned data.
 - Drizzle ORM: schema/migrations/query layer.
 - IMAP: source of truth for mailbox folders and incoming mailbox state.

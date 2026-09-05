@@ -19,6 +19,7 @@
     "eslint.config.mjs",
     "next.config.ts",
     "package.json",
+    "proxy.ts",
     "tsconfig.json",
     "vitest.config.mts",
     "playwright.config.ts",

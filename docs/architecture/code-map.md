@@ -10,6 +10,7 @@ Owns:
 - route handlers/server actions.
 - app-specific tests and browser verification.
 - static app assets.
+- auth foundation: WorkOS AuthKit proxy, callback/login/logout routes, auth-aware navigation, and protected dashboard shell.
 
 It may consume internal packages but should not absorb reusable SDK primitives or database implementation.
 

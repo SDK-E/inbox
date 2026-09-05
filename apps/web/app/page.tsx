@@ -1,15 +1,8 @@
-import Image from "next/image";
+"use client";
 
-const features = [
-  "Unified inbox",
-  "Multiple accounts",
-  "IMAP folders",
-  "Conversation threads",
-  "Search",
-  "Contacts",
-  "Scheduling",
-  "Rules",
-];
+import { useAuth } from "@workos-inc/authkit-nextjs/components";
+import Image from "next/image";
+import Link from "next/link";
 
 function Logo() {
   return (
@@ -35,15 +28,68 @@ function Logo() {
   );
 }
 
+function AuthSection() {
+  const { user, loading } = useAuth({ ensureSignedIn: false });
+
+  if (loading) {
+    return (
+      <span className="text-xs text-[#4c5f48] dark:text-[#9bb397]">
+        Loading...
+      </span>
+    );
+  }
+
+  if (user) {
+    return (
+      <div className="flex items-center gap-4">
+        <span className="text-xs text-[#4c5f48] dark:text-[#9bb397]">
+          {user.email}
+        </span>
+        <Link
+          href="/dashboard"
+          className="rounded-md bg-[#082003] px-4 py-2 text-xs text-white dark:bg-[#f2f8f0] dark:text-[#082003]"
+        >
+          Open Inbox
+        </Link>
+        <form action="/logout" method="GET">
+          <button
+            type="submit"
+            className="text-xs text-[#4c5f48] underline dark:text-[#9bb397]"
+          >
+            Sign out
+          </button>
+        </form>
+      </div>
+    );
+  }
+
+  return (
+    <Link
+      href="/login"
+      className="rounded-md bg-[#082003] px-4 py-2 text-xs text-white dark:bg-[#f2f8f0] dark:text-[#082003]"
+    >
+      Sign in
+    </Link>
+  );
+}
+
+const features = [
+  "Unified inbox",
+  "Multiple accounts",
+  "IMAP folders",
+  "Conversation threads",
+  "Search",
+  "Contacts",
+  "Scheduling",
+  "Rules",
+];
+
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col">
       <header className="flex items-center justify-between px-6 py-6 sm:px-10 lg:px-16">
         <Logo />
-
-        <span className="text-xs text-[#4c5f48] dark:text-[#9bb397]">
-          by SDK Enterprises
-        </span>
+        <AuthSection />
       </header>
 
       <section className="flex flex-1 items-center px-6 py-16 sm:px-10 lg:px-16">

@@ -1,3 +1,4 @@
+import { AuthKitProvider } from "@workos-inc/authkit-nextjs/components";
 import { JetBrains_Mono } from "next/font/google";
 
 import type { Metadata, Viewport } from "next";
@@ -34,7 +35,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${jetBrainsMono.variable} h-full antialiased`}>
       <body className="min-h-full bg-white text-[#082003] dark:bg-[#081006] dark:text-[#f2f8f0]">
-        {children}
+        <AuthKitProvider>{children}</AuthKitProvider>
       </body>
     </html>
   );
