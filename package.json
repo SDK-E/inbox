@@ -22,13 +22,14 @@
     "dead-code": "knip",
     "module-graph": "depcruise --config .dependency-cruiser.cjs .",
     "readability": "pnpm dead-code && pnpm module-graph",
-    "db:generate": "drizzle-kit generate",
-    "db:migrate": "drizzle-kit migrate",
-    "db:push": "drizzle-kit push"
+    "db:generate": "DOTENV_CONFIG_PATH=/dev/null drizzle-kit generate",
+    "db:migrate": "DOTENV_CONFIG_PATH=/dev/null drizzle-kit migrate",
+    "db:push": "DOTENV_CONFIG_PATH=/dev/null drizzle-kit push"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",
     "@neondatabase/serverless": "^1.0.1",
+    "@next/env": "^16.3.4",
     "@workos-inc/authkit-nextjs": "^4.3.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -60,6 +61,8 @@
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
     "dependency-cruiser": "^18.2.0",
+    "dotenv": "^17.4.2",
+    "dotenv-cli": "^11.0.0",
     "drizzle-kit": "^0.31.5",
     "eslint": "^10.10.0",
     "eslint-config-prettier": "^10.1.8",
