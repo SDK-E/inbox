@@ -21,7 +21,10 @@
     "snapshot": "repomix",
     "dead-code": "knip",
     "module-graph": "depcruise --config .dependency-cruiser.cjs .",
-    "readability": "pnpm dead-code && pnpm module-graph"
+    "readability": "pnpm dead-code && pnpm module-graph",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",
