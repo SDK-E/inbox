@@ -66,7 +66,7 @@ function DesktopShell({
         readerVisible={readerVisible}
       />
       <div className="flex flex-1 overflow-hidden">
-        <ResizablePanelGroup orientation="horizontal">
+        <ResizablePanelGroup orientation="horizontal" className="h-full">
           <ResizablePanel defaultSize={18} minSize={15}>
             <div className="h-full border-r border-border">
               <MessageListPane />
