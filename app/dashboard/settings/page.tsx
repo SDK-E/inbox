@@ -1,5 +1,6 @@
-import { listMailAccounts } from "@/app/actions/mail-accounts";
 import { MailAccountsPageClient } from "./mail-accounts/mail-accounts-page-client";
+
+import { listMailAccounts } from "@/app/actions/mail-accounts";
 
 export const dynamic = "force-dynamic";
 

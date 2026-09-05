@@ -39,6 +39,17 @@ function getSystemTheme(): ResolvedTheme {
     : "light";
 }
 
+function getInitialResolvedTheme(): ResolvedTheme {
+  if (typeof window === "undefined") return "light";
+  try {
+    return document.documentElement.classList.contains("dark")
+      ? "dark"
+      : "light";
+  } catch {
+    return "light";
+  }
+}
+
 export function useTheme(): ThemeContextValue {
   const context = useContext(ThemeContext);
   if (!context) {
@@ -49,12 +60,20 @@ export function useTheme(): ThemeContextValue {
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<Theme>("system");
-  const [resolvedTheme, setResolvedTheme] = useState<ResolvedTheme>("light");
+  const [resolvedTheme, setResolvedTheme] = useState<ResolvedTheme>(() =>
+    getInitialResolvedTheme(),
+  );
 
   useEffect(() => {
     const stored = getStoredTheme();
     setThemeState(stored);
-    setResolvedTheme(getSystemTheme());
+    if (stored === "light") {
+      setResolvedTheme("light");
+    } else if (stored === "dark") {
+      setResolvedTheme("dark");
+    } else {
+      setResolvedTheme(getSystemTheme());
+    }
   }, []);
 
   const setTheme = useCallback((next: Theme) => {
