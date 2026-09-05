@@ -1,10 +1,12 @@
 # PRD — Platform Foundation
 
 ## Goal
+
 Provide a safe production foundation on which all Inbox features can be implemented incrementally.
 
 ## Requirements
-- Turborepo `apps/` + `packages/` structure.
+
+ - pnpm workspace with root Next.js app and `packages/` libraries.
 - Next.js 16 App Router, React 19, strict TypeScript, Tailwind 4.
 - WorkOS AuthKit for auth/session/org foundation.
 - Neon + Drizzle.
@@ -16,6 +18,7 @@ Provide a safe production foundation on which all Inbox features can be implemen
 - No speculative product services.
 
 ## Acceptance
+
 - Authenticated/unauthenticated routing works.
 - Server/client/secret boundaries are explicit.
 - DB migrations and test setup work.

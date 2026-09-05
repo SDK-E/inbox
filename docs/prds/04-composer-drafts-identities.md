@@ -1,9 +1,11 @@
 # PRD — Composer, Drafts & Identities
 
 ## Goal
+
 Provide a reliable professional writing/sending experience.
 
 ## Requirements
+
 - New/reply/reply-all/forward.
 - From identity, To/CC/BCC, subject.
 - Rich Text, Markdown, Plain Text.
@@ -16,4 +18,5 @@ Provide a reliable professional writing/sending experience.
 - Reply defaults to receiving identity/account.
 
 ## Acceptance
+
 No content loss on close/reload/send failure; invalid recipients are blocked; all modes work predictably; switching modes does not silently corrupt content.

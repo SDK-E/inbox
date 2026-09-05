@@ -3,6 +3,7 @@
 Before using any framework, package, API, CLI, configuration format, external service, security recommendation, compatibility assumption, or implementation pattern that may have changed since training, verify it using current documentation first.
 
 Prefer:
+
 1. Repository/local framework documentation.
 2. Context7.
 3. Official vendor documentation.

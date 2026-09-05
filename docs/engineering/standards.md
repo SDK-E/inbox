@@ -24,6 +24,7 @@ Do not code from assumptions.
 Prefer mature, actively maintained packages to custom implementations.
 
 Before adding a package:
+
 1. verify the capability is not already present;
 2. read current official docs;
 3. verify compatibility/maintenance/security;

@@ -38,13 +38,15 @@ Widget tokens expire after one hour.
 const workos = new WorkOS(process.env.WORKOS_API_KEY, {
   clientId: process.env.WORKOS_CLIENT_ID,
   // Use WORKOS_BASE_API_URL if set (e.g. for staging/local); falls back to default
-  ...(process.env.WORKOS_BASE_API_URL && { host: process.env.WORKOS_BASE_API_URL }),
+  ...(process.env.WORKOS_BASE_API_URL && {
+    host: process.env.WORKOS_BASE_API_URL,
+  }),
 });
 
 const authToken = await workos.widgets.getToken({
   userId: user.id,
   organizationId,
-  scopes: ['<scope-for-this-widget>'], // see Widget Scope Reference above
+  scopes: ["<scope-for-this-widget>"], // see Widget Scope Reference above
 });
 ```
 

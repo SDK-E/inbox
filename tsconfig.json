@@ -15,9 +15,9 @@
     "jsx": "react-jsx",
     "paths": {
       "@/*": ["./*"],
-      "@inbox/ui": ["packages/ui/src/index.ts"],
-      "@inbox/db": ["packages/db/src/index.ts"],
-      "@inbox/utils": ["packages/utils/src/index.ts"]
+      "@inbox/ui/*": ["./packages/ui/src/*"],
+      "@inbox/db/*": ["./packages/db/src/*"],
+      "@inbox/utils/*": ["./packages/utils/src/*"]
     },
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -26,21 +26,23 @@
     "allowJs": true,
     "noEmit": true,
     "incremental": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "rootDir": ".",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
+  "exclude": ["node_modules", ".next"],
   "include": [
     "next-env.d.ts",
-    "apps/**/*",
-    "packages/**/*",
-    "tests/**/*",
-    "eslint.config.mjs",
-    "drizzle.config.ts",
-    "next.config.ts",
-    "vitest.config.mts",
-    "*.config.mjs",
-    "*.config.ts",
     ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts"
-  ],
-  "exclude": ["node_modules"]
+    ".next/dev/types/**/*.ts",
+    "**/*.mts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.mjs",
+    "**/*.json"
+  ]
 }

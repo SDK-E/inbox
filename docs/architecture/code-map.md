@@ -2,9 +2,10 @@
 
 This is a responsibility map, not a generated file listing. Update it when ownership moves.
 
-## `apps/web/`
+## App root (`/`)
 
 Owns:
+
 - Next.js routes/layouts/pages.
 - app shell and product composition.
 - route handlers/server actions.
@@ -16,13 +17,16 @@ It may consume internal packages but should not absorb reusable SDK primitives o
 
 ## `packages/ui/`
 
-Owns reusable SDK-branded UI primitives/components that are useful beyond Inbox.
+Owns:
+- shadcn/ui base primitive wrappers and app-specific UI components.
+- Design-system tokens and layout primitives.
 
 No Inbox mail-domain logic.
 
 ## `packages/db/`
 
 Owns:
+
 - Drizzle schema.
 - migrations.
 - server-only DB client/query helpers.

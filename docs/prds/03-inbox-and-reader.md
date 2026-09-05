@@ -1,9 +1,11 @@
 # PRD — Inbox & Reader
 
 ## Goal
+
 Make reading/triaging mail fast across one or many accounts.
 
 ## Requirements
+
 - Unified inbox and per-account/folder views.
 - Virtualized/paginated large lists.
 - Read/unread, star, archive, move, trash, restore, delete.
@@ -15,4 +17,5 @@ Make reading/triaging mail fast across one or many accounts.
 - Optimistic reversible actions + Undo.
 
 ## Acceptance
+
 Large mailboxes stay responsive; actions reflect provider/app state correctly; malicious mail content cannot escape reader; thread and individual modes both work.

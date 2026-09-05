@@ -19,6 +19,7 @@ Inbox wordmark: `Inbox.` where the dot is a circular `#2cdb16` accent. Use the e
 ## UI direction
 
 Prefer:
+
 - compact controls;
 - restrained borders;
 - flat/subtle surfaces;
@@ -29,6 +30,7 @@ Prefer:
 - Lucide as the default icon family.
 
 Avoid:
+
 - glassmorphism;
 - excessive gradients/blur/glow;
 - giant rounded cards;

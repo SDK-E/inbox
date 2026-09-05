@@ -7,5 +7,4 @@ minimumReleaseAgeExclude:
   - eslint@10.10.0
 
 packages:
-  - "apps/*"
   - "packages/*"

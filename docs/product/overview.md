@@ -27,11 +27,11 @@ The core experience is a fast, keyboard-friendly mail workspace where a user can
 - Next.js 16 App Router + React 19.
 - Strict TypeScript.
 - Tailwind CSS 4.
-- Turborepo with `apps/` and `packages/`.
+ - pnpm workspace with root Next.js app and `packages/` libraries.
 - WorkOS AuthKit for authentication, sessions, organizations, and role/permission groundwork.
 - Neon PostgreSQL + Drizzle ORM.
 - Vitest + Playwright.
-- Stagehand only for agentic browser workflows where it adds value.
+- Playwright only for agentic browser workflows where it adds value.
 - Upstash/Redis only when a concrete requirement justifies it.
 
 ## Product boundary

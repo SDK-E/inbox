@@ -75,8 +75,8 @@ If `middleware.ts` already exists with custom logic (rate limiting, logging, hea
 **Pattern for composing with existing middleware:**
 
 ```typescript
-import { NextRequest, NextResponse } from 'next/server';
-import { authkit, handleAuthkitHeaders } from '@workos-inc/authkit-nextjs';
+import { NextRequest, NextResponse } from "next/server";
+import { authkit, handleAuthkitHeaders } from "@workos-inc/authkit-nextjs";
 
 export default async function middleware(request: NextRequest) {
   // 1. Get auth session and headers from AuthKit
@@ -87,12 +87,14 @@ export default async function middleware(request: NextRequest) {
   // Rate limiting, logging, custom headers, etc.
   const rateLimitResult = checkRateLimit(request);
   if (!rateLimitResult.allowed) {
-    return new NextResponse('Too Many Requests', { status: 429 });
+    return new NextResponse("Too Many Requests", { status: 429 });
   }
 
   // 3. Protect routes - redirect to auth if needed
-  if (pathname.startsWith('/dashboard') && !session.user && authorizationUrl) {
-    return handleAuthkitHeaders(request, headers, { redirect: authorizationUrl });
+  if (pathname.startsWith("/dashboard") && !session.user && authorizationUrl) {
+    return handleAuthkitHeaders(request, headers, {
+      redirect: authorizationUrl,
+    });
   }
 
   // 4. Continue with AuthKit headers properly handled
@@ -143,9 +145,13 @@ This is required for:
 
 ```tsx
 // app/layout.tsx
-import { AuthKitProvider } from '@workos-inc/authkit-nextjs/components';
+import { AuthKitProvider } from "@workos-inc/authkit-nextjs/components";
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <body>
@@ -175,9 +181,9 @@ If you need a reusable `nav-auth.tsx` / header auth button, make it a **client c
 Use `refreshAuth({ ensureSignedIn: true })` from a click handler to start sign-in instead of computing a sign-in URL during render.
 
 ```tsx
-'use client';
+"use client";
 // Check README for exact import path for your SDK version
-import { useAuth } from '@workos-inc/authkit-nextjs/components';
+import { useAuth } from "@workos-inc/authkit-nextjs/components";
 
 export function NavAuth() {
   const { user, isLoading, refreshAuth } = useAuth();
@@ -189,7 +195,10 @@ export function NavAuth() {
   }
 
   return (
-    <button type="button" onClick={() => void refreshAuth({ ensureSignedIn: true })}>
+    <button
+      type="button"
+      onClick={() => void refreshAuth({ ensureSignedIn: true })}
+    >
       Sign in
     </button>
   );
@@ -207,7 +216,12 @@ Sign-out **mutates state** — it clears the session — so it must never be a `
 Use a **POST server action**. In a Server Component, an inline action is fine:
 
 ```tsx
-<form action={async () => { 'use server'; await signOut(); }}>
+<form
+  action={async () => {
+    "use server";
+    await signOut();
+  }}
+>
   <button type="submit">Sign out</button>
 </form>
 ```
@@ -216,20 +230,20 @@ A **client** component (for example a nav that needs `useAuth()`) cannot define 
 
 ```tsx
 // app/auth/actions.ts
-'use server';
-import { signOut } from '@workos-inc/authkit-nextjs'; // verify export path in README
+"use server";
+import { signOut } from "@workos-inc/authkit-nextjs"; // verify export path in README
 export async function signOutAction() {
   await signOut();
 }
 ```
 
 ```tsx
-'use client';
-import { signOutAction } from '@/app/auth/actions';
+"use client";
+import { signOutAction } from "@inbox/app/auth/actions";
 // ...
 <form action={signOutAction}>
   <button type="submit">Sign out</button>
-</form>
+</form>;
 ```
 
 `signOut()` accepts an optional `{ returnTo }`; with none, it redirects to the Logout URI configured in your WorkOS dashboard. If a generated `GET` sign-out route exists, **delete it** rather than switching it to `POST` — that removes the extra logout surface entirely.

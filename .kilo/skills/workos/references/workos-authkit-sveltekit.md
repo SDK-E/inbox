@@ -63,8 +63,8 @@ If existing auth detected (Lucia is most common in SvelteKit):
 - Use `sequence()` from `@sveltejs/kit/hooks` to compose handles:
 
   ```typescript
-  import { sequence } from '@sveltejs/kit/hooks';
-  import { authkitHandle } from '@workos/authkit-sveltekit';
+  import { sequence } from "@sveltejs/kit/hooks";
+  import { authkitHandle } from "@workos/authkit-sveltekit";
 
   // Keep existing handle, compose with AuthKit
   export const handle = sequence(authkitHandle, existingHandle);
@@ -99,8 +99,8 @@ Create or update `src/hooks.server.ts` with the authkit handle function from the
 If `src/hooks.server.ts` already exists with custom logic, use SvelteKit's `sequence()` helper to compose hooks:
 
 ```typescript
-import { sequence } from '@sveltejs/kit/hooks';
-import { authkitHandle } from '@workos/authkit-sveltekit'; // Check README for exact export
+import { sequence } from "@sveltejs/kit/hooks";
+import { authkitHandle } from "@workos/authkit-sveltekit"; // Check README for exact export
 
 export const handle = sequence(authkitHandle, yourExistingHandle);
 ```
@@ -129,9 +129,9 @@ Check README for the exact pattern — typically a `load` function that returns 
 
 ```typescript
 // src/routes/+layout.server.ts
-import type { LayoutServerLoad } from './$types';
+import type { LayoutServerLoad } from "./$types";
 
-export const load: LayoutServerLoad = async (event) => {
+export const load: LayoutServerLoad = async event => {
   // Check README for exact API — session is typically on event.locals
   return {
     user: event.locals.user, // or similar from README

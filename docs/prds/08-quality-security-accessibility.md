@@ -1,9 +1,11 @@
 # PRD — Quality, Security & Accessibility
 
 ## Goal
+
 Inbox must behave like a production productivity application, not a demo.
 
 ## Requirements
+
 - WCAG 2.2 AA target.
 - Keyboard-only core flows.
 - Visible focus and correct focus management.
@@ -18,4 +20,5 @@ Inbox must behave like a production productivity application, not a demo.
 - No unresolved lint/type/build/test failures.
 
 ## Acceptance
+
 Core flows pass automated + browser checks, representative responsive/theme cases, security review, and final diff review.

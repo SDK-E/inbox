@@ -49,7 +49,10 @@ const config = {
       comment:
         "Unknown / unresolved dependencies should be fixed or explicitly whitelisted.",
       from: {},
-      to: { couldNotResolve: true, pathNot: "^(node_modules)" },
+      to: {
+        couldNotResolve: true,
+        pathNot: "^(node_modules|server-only)$",
+      },
     },
   ],
   options: {
@@ -58,6 +61,9 @@ const config = {
     },
     doNotFollow: {
       path: "(node_modules|.next|out|build|dist|coverage)",
+    },
+    exclude: {
+      path: "^\\.(qwen|kilo|kilocode|kiro|claude|agents|github)/",
     },
     enhancedResolveOptions: {
       exportsFields: ["exports"],

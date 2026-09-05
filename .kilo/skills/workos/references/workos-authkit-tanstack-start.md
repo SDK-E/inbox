@@ -92,8 +92,8 @@ Read the existing file first. Add `authkitMiddleware` to the existing `requestMi
 Create `src/start.ts` (or `app/start.ts` for legacy) using `createStart`:
 
 ```typescript
-import { createStart } from '@tanstack/react-start';
-import { authkitMiddleware } from '@workos/authkit-tanstack-react-start';
+import { createStart } from "@tanstack/react-start";
+import { authkitMiddleware } from "@workos/authkit-tanstack-react-start";
 
 export const startInstance = createStart(() => ({
   requestMiddleware: [authkitMiddleware()],
@@ -115,10 +115,10 @@ Path must match `WORKOS_REDIRECT_URI`. For `/api/auth/callback`:
 **Legacy (nested routes):** `app/routes/api/auth/callback.tsx`
 
 ```typescript
-import { createFileRoute } from '@tanstack/react-router';
-import { handleCallbackRoute } from '@workos/authkit-tanstack-react-start';
+import { createFileRoute } from "@tanstack/react-router";
+import { handleCallbackRoute } from "@workos/authkit-tanstack-react-start";
 
-export const Route = createFileRoute('/api/auth/callback')({
+export const Route = createFileRoute("/api/auth/callback")({
   server: {
     handlers: {
       GET: handleCallbackRoute(),
@@ -138,10 +138,10 @@ export const Route = createFileRoute('/api/auth/callback')({
 Use `getAuth()` in route loaders to check authentication:
 
 ```typescript
-import { createFileRoute, redirect } from '@tanstack/react-router';
-import { getAuth, getSignInUrl } from '@workos/authkit-tanstack-react-start';
+import { createFileRoute, redirect } from "@tanstack/react-router";
+import { getAuth, getSignInUrl } from "@workos/authkit-tanstack-react-start";
 
-export const Route = createFileRoute('/dashboard')({
+export const Route = createFileRoute("/dashboard")({
   loader: async () => {
     const { user } = await getAuth();
     if (!user) {
@@ -157,13 +157,13 @@ export const Route = createFileRoute('/dashboard')({
 ## Sign Out Route
 
 ```typescript
-import { createFileRoute, redirect } from '@tanstack/react-router';
-import { signOut } from '@workos/authkit-tanstack-react-start';
+import { createFileRoute, redirect } from "@tanstack/react-router";
+import { signOut } from "@workos/authkit-tanstack-react-start";
 
-export const Route = createFileRoute('/signout')({
+export const Route = createFileRoute("/signout")({
   loader: async () => {
     await signOut();
-    throw redirect({ href: '/' });
+    throw redirect({ href: "/" });
   },
 });
 ```
@@ -190,7 +190,7 @@ function RootComponent() {
 **2. Use hooks in components:**
 
 ```typescript
-import { useAuth } from '@workos/authkit-tanstack-react-start/client';
+import { useAuth } from "@workos/authkit-tanstack-react-start/client";
 
 function Profile() {
   const { user, isLoading } = useAuth();

@@ -7,6 +7,7 @@ Default wide layout:
 `Navigation | Message list | Reader`
 
 Approximate defaults:
+
 - Navigation: 240px.
 - List: 380px.
 - Reader: remaining space.
@@ -17,6 +18,7 @@ Top bar stays compact and contains product identity, global search, useful sync/
 ## Navigation
 
 Primary mail views:
+
 - Inbox
 - Starred
 - Snoozed
@@ -28,6 +30,7 @@ Primary mail views:
 Below them, show each connected account and its real nested IMAP folders.
 
 Secondary product areas:
+
 - Contacts
 - Rules
 - Settings
@@ -54,6 +57,7 @@ Handle safe HTML, plain text, remote images, quoted content, inline media, and a
 ## Composer
 
 Three presentations:
+
 - floating for new messages on desktop;
 - inline for replies;
 - focus/full-screen for long writing and smaller viewports.

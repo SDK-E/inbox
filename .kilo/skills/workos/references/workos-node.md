@@ -84,7 +84,7 @@ Adapt to detected module system (ESM vs CJS):
 **ESM/TypeScript:**
 
 ```typescript
-import { WorkOS } from '@workos-inc/node';
+import { WorkOS } from "@workos-inc/node";
 const workos = new WorkOS(process.env.WORKOS_API_KEY, {
   clientId: process.env.WORKOS_CLIENT_ID,
 });
@@ -93,7 +93,7 @@ const workos = new WorkOS(process.env.WORKOS_API_KEY, {
 **CJS:**
 
 ```javascript
-const { WorkOS } = require('@workos-inc/node');
+const { WorkOS } = require("@workos-inc/node");
 const workos = new WorkOS(process.env.WORKOS_API_KEY, {
   clientId: process.env.WORKOS_CLIENT_ID,
 });

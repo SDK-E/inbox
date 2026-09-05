@@ -5,6 +5,7 @@ Test observable behavior and meaningful failure modes.
 ## Unit / integration
 
 Use Vitest for:
+
 - parsing/validation;
 - transformations/domain behavior;
 - rules/search logic;
@@ -21,6 +22,7 @@ Do not weaken assertions, delete failing tests, add arbitrary sleeps, or mock th
 Use Playwright for deterministic user workflows.
 
 UI changes should verify:
+
 - happy path;
 - relevant loading/empty/error states;
 - keyboard interaction;
@@ -28,7 +30,7 @@ UI changes should verify:
 - dark/light appearance where affected;
 - browser/runtime errors.
 
-Stagehand may support agentic browser workflows, but never replaces deterministic Playwright coverage.
+Playwright may support agentic browser workflows, but never replaces deterministic Playwright coverage.
 
 ## Test data
 

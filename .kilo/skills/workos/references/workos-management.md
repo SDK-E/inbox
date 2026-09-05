@@ -139,27 +139,27 @@ Create a `workos-seed.yml` file in your repo:
 
 ```yaml
 permissions:
-  - name: 'Read Users'
-    slug: 'read-users'
-  - name: 'Write Users'
-    slug: 'write-users'
+  - name: "Read Users"
+    slug: "read-users"
+  - name: "Write Users"
+    slug: "write-users"
 
 roles:
-  - name: 'Admin'
-    slug: 'admin'
-    permissions: ['read-users', 'write-users']
-  - name: 'Viewer'
-    slug: 'viewer'
-    permissions: ['read-users']
+  - name: "Admin"
+    slug: "admin"
+    permissions: ["read-users", "write-users"]
+  - name: "Viewer"
+    slug: "viewer"
+    permissions: ["read-users"]
 
 organizations:
-  - name: 'Test Org'
-    domains: ['test.com']
+  - name: "Test Org"
+    domains: ["test.com"]
 
 config:
-  redirect_uris: ['http://localhost:3000/callback']
-  cors_origins: ['http://localhost:3000']
-  homepage_url: 'http://localhost:3000'
+  redirect_uris: ["http://localhost:3000/callback"]
+  cors_origins: ["http://localhost:3000"]
+  homepage_url: "http://localhost:3000"
 ```
 
 Then run:
@@ -256,17 +256,17 @@ JSON output format:
 
 ### Workflow Commands
 
-| Command                       | Purpose                                     |
-| ----------------------------- | ------------------------------------------- |
-| `workos seed --file=<yaml>`   | Declarative resource provisioning from YAML |
-| `workos seed --clean`         | Tear down seeded resources                  |
-| `workos setup-org <name>`     | One-shot org onboarding                     |
-| `workos onboard-user <email>` | Send invitation + optional wait             |
-| `workos debug-sso <connId>`   | SSO connection diagnostics                  |
-| `workos debug-sync <dirId>`   | Directory sync diagnostics                  |
+| Command                       | Purpose                                                                                        |
+| ----------------------------- | ---------------------------------------------------------------------------------------------- |
+| `workos seed --file=<yaml>`   | Declarative resource provisioning from YAML                                                    |
+| `workos seed --clean`         | Tear down seeded resources                                                                     |
+| `workos setup-org <name>`     | One-shot org onboarding                                                                        |
+| `workos onboard-user <email>` | Send invitation + optional wait                                                                |
+| `workos debug-sso <connId>`   | SSO connection diagnostics                                                                     |
+| `workos debug-sync <dirId>`   | Directory sync diagnostics                                                                     |
 | `workos install`              | Install AuthKit into a project (bootstrap; can provision credentials with no existing account) |
-| `workos env claim`            | Link an unclaimed environment to your account |
-| `workos mcp`                  | Install/manage the WorkOS MCP server in Claude Code, Codex, and Cursor |
+| `workos env claim`            | Link an unclaimed environment to your account                                                  |
+| `workos mcp`                  | Install/manage the WorkOS MCP server in Claude Code, Codex, and Cursor                         |
 
 ### Common Flags
 
@@ -284,28 +284,28 @@ These operations are commonly asked for but are **not** supported in the WorkOS 
 
 ### Not in the CLI — where each operation lives
 
-| Operation                                                       | MCP operation (if connected)                                       | Otherwise                                                                               | Docs                                                                     |
-| --------------------------------------------------------------- | ------------------------------------------------------------------ | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| Create an SSO connection                                        | setup link via `generatePortalSetupLink` (intent `Sso`); no direct create in the MCP | Admin Portal (generate via `workos portal generate-link --intent=sso --org=<org_id>`)   | https://workos.com/docs/sso/guide                                        |
-| Create a Directory Sync connection                              | setup link via `generatePortalSetupLink` (intent `Dsync`); direct `createDirectory` exists but is feature-flag-gated | Admin Portal (generate via `workos portal generate-link --intent=dsync --org=<org_id>`) | https://workos.com/docs/directory-sync/quick-start                       |
-| Map IdP (Entra/AD/Okta/Google Workspace) groups to WorkOS roles | `upsertAndDeleteGroupRoleMappings` (mutate; read via `directoryGroupsWithRoleMappings`) | Admin Portal during directory setup, or directory page in Dashboard                     | https://workos.com/docs/directory-sync/identity-provider-role-assignment |
-| Map SSO groups to WorkOS roles                                  | `createConnectionGroupWithRoleMapping` (mutate)                    | Admin Portal during SSO setup, or connection page in Dashboard                          | https://workos.com/docs/rbac/idp-role-assignment                         |
-| Enable/disable Admin Portal role-assignment step                | —                                                                  | Authorization page in the WorkOS Dashboard                                              | https://workos.com/docs/directory-sync/identity-provider-role-assignment |
-| Enable/disable authentication methods                           | `updateAuthkitSettings` (mutate)                                   | Authentication settings in the WorkOS Dashboard                                         | https://workos.com/docs/authkit                                          |
-| Configure session lifetime                                      | `updateAuthkitSettings` (mutate)                                   | Authentication settings in the WorkOS Dashboard                                         | https://workos.com/docs/user-management/sessions                         |
+| Operation                                                       | MCP operation (if connected)                                                                                                      | Otherwise                                                                               | Docs                                                                     |
+| --------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| Create an SSO connection                                        | setup link via `generatePortalSetupLink` (intent `Sso`); no direct create in the MCP                                              | Admin Portal (generate via `workos portal generate-link --intent=sso --org=<org_id>`)   | https://workos.com/docs/sso/guide                                        |
+| Create a Directory Sync connection                              | setup link via `generatePortalSetupLink` (intent `Dsync`); direct `createDirectory` exists but is feature-flag-gated              | Admin Portal (generate via `workos portal generate-link --intent=dsync --org=<org_id>`) | https://workos.com/docs/directory-sync/quick-start                       |
+| Map IdP (Entra/AD/Okta/Google Workspace) groups to WorkOS roles | `upsertAndDeleteGroupRoleMappings` (mutate; read via `directoryGroupsWithRoleMappings`)                                           | Admin Portal during directory setup, or directory page in Dashboard                     | https://workos.com/docs/directory-sync/identity-provider-role-assignment |
+| Map SSO groups to WorkOS roles                                  | `createConnectionGroupWithRoleMapping` (mutate)                                                                                   | Admin Portal during SSO setup, or connection page in Dashboard                          | https://workos.com/docs/rbac/idp-role-assignment                         |
+| Enable/disable Admin Portal role-assignment step                | —                                                                                                                                 | Authorization page in the WorkOS Dashboard                                              | https://workos.com/docs/directory-sync/identity-provider-role-assignment |
+| Enable/disable authentication methods                           | `updateAuthkitSettings` (mutate)                                                                                                  | Authentication settings in the WorkOS Dashboard                                         | https://workos.com/docs/authkit                                          |
+| Configure session lifetime                                      | `updateAuthkitSettings` (mutate)                                                                                                  | Authentication settings in the WorkOS Dashboard                                         | https://workos.com/docs/user-management/sessions                         |
 | Set up social login providers (Google, GitHub, etc.)            | `updateOauthCredentials` (mutate — updates a provider's client credentials and toggles it for AuthKit; not full first-time setup) | Authentication settings in the WorkOS Dashboard                                         | https://workos.com/docs/user-management/social-login                     |
-| Create feature flags                                            | `createFlag` (mutate; per-env state via `updateFlagEnvironment`)   | Feature Flags page in the WorkOS Dashboard (toggle/target ops work via CLI)             | https://workos.com/docs/feature-flags                                    |
-| Configure branding (logos, colors)                              | `updateAppBranding` (mutate)                                       | Branding settings in the WorkOS Dashboard                                               | https://workos.com/docs/admin-portal/branding                            |
-| Set up email templates                                          | — (read-only: `authkitEmailSettings`)                              | Email settings in the WorkOS Dashboard                                                  | https://workos.com/docs/emails                                           |
-| Manage billing / plan                                           | reads (`workspaceBilling`, invoices) + confirmation-gated address/tax-ID writes; plan changes stay in the Dashboard | Settings in the WorkOS Dashboard                                                        | —                                                                        |
+| Create feature flags                                            | `createFlag` (mutate; per-env state via `updateFlagEnvironment`)                                                                  | Feature Flags page in the WorkOS Dashboard (toggle/target ops work via CLI)             | https://workos.com/docs/feature-flags                                    |
+| Configure branding (logos, colors)                              | `updateAppBranding` (mutate)                                                                                                      | Branding settings in the WorkOS Dashboard                                               | https://workos.com/docs/admin-portal/branding                            |
+| Set up email templates                                          | — (read-only: `authkitEmailSettings`)                                                                                             | Email settings in the WorkOS Dashboard                                                  | https://workos.com/docs/emails                                           |
+| Manage billing / plan                                           | reads (`workspaceBilling`, invoices) + confirmation-gated address/tax-ID writes; plan changes stay in the Dashboard               | Settings in the WorkOS Dashboard                                                        | —                                                                        |
 
 ### API-only (not in CLI, but can be scripted via SDK / REST — or the MCP when connected)
 
-| Operation                              | MCP operation (if connected)              | Otherwise                                   | Notes                                                                                                      |
-| -------------------------------------- | ----------------------------------------- | ------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| Assign a role to an individual user    | `updateRoleOnOrganizationMembership`      | `updateOrganizationMembership` via SDK/REST | Warning: IdP mapping silently overrides this on next sync/login when mapping exists. See `workos-rbac.md`. |
-| Webhook signature verification         | —                                         | SDK (`workos.webhooks.verifyEvent`)         | CLI can create/list/delete webhooks but does not verify events                                             |
-| Session introspection / JWT validation | —                                         | SDK                                         | CLI has `workos session list/revoke` only                                                                  |
+| Operation                              | MCP operation (if connected)         | Otherwise                                   | Notes                                                                                                      |
+| -------------------------------------- | ------------------------------------ | ------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| Assign a role to an individual user    | `updateRoleOnOrganizationMembership` | `updateOrganizationMembership` via SDK/REST | Warning: IdP mapping silently overrides this on next sync/login when mapping exists. See `workos-rbac.md`. |
+| Webhook signature verification         | —                                    | SDK (`workos.webhooks.verifyEvent`)         | CLI can create/list/delete webhooks but does not verify events                                             |
+| Session introspection / JWT validation | —                                    | SDK                                         | CLI has `workos session list/revoke` only                                                                  |
 
 **Rule of thumb**: if a user asks "is there a CLI command for X" and X is not in the Quick Reference table above and is not produced by `workos --help --json`, the answer is **no** — but before sending the user elsewhere, check whether a connected WorkOS MCP server covers X (the tables above, or `list_operations`). Do not speculate on either surface: the CLI's source of truth is `--help --json`; the MCP's is `list_operations`.
 

@@ -1,6 +1,5 @@
 import { defineConfig, globalIgnores } from "eslint/config";
 import tseslint from "typescript-eslint";
-import nextVitals from "eslint-config-next/core-web-vitals";
 import importPlugin from "eslint-plugin-import-x";
 import unusedImports from "eslint-plugin-unused-imports";
 import sonarjs from "eslint-plugin-sonarjs";
@@ -31,9 +30,6 @@ export default defineConfig([
     "repomix-output.md",
   ]),
 
-  // Next.js: React, JSX, a11y, Core Web Vitals, Next.js-specific rules
-  ...nextVitals,
-
   // TypeScript: parser, recommended, strict, and type-aware rules
   ...tseslint.configs.strictTypeChecked,
 
@@ -42,7 +38,8 @@ export default defineConfig([
     name: "typescript-eslint/type-aware",
     languageOptions: {
       parserOptions: {
-        project: "./tsconfig.json",
+        project: "../../../tsconfig.json",
+        tsconfigRootDir: new URL(".", import.meta.url).pathname,
       },
     },
   },
@@ -51,7 +48,7 @@ export default defineConfig([
   {
     name: "globals/node",
     files: [
-      "lib/**",
+      "packages/utils/src/lib/**",
       "app/api/**",
       "app/**/route.ts",
       "*.config.*",
@@ -81,7 +78,7 @@ export default defineConfig([
           "newlines-between": "always",
           alphabetize: { order: "asc", caseInsensitive: true },
           pathGroups: [
-            { pattern: "@/**", group: "internal", position: "before" },
+            { pattern: "@inbox/**", group: "internal", position: "before" },
           ],
         },
       ],
@@ -93,7 +90,7 @@ export default defineConfig([
           zones: [
             {
               target: ["./app/**"],
-              from: ["./lib/db/**", "@/lib/db/**"],
+              from: ["./packages/utils/src/**", "@inbox/utils/**"],
               message:
                 "App code must not import server-only database modules directly. " +
                 "Use server actions or API routes instead.",

@@ -13,13 +13,24 @@
       "enabled": true,
       "timeout": 10000,
     },
+    "playwright": {
+      "type": "local",
+      "command": ["npx", "-y", "@playwright/mcp@latest"],
+      "enabled": true,
+      "timeout": 10000,
+    },
   },
   "permission": {
     "context7_*": "allow",
     "next_devtools_*": "allow",
+    "playwright_*": "allow",
+    "skill": {
+      "*": "allow"
+    }
   },
   "instructions": [
     "Before any substantive work, inspect the available skills and load all skills that clearly apply to the task. Skill selection must happen before planning or implementation. Do not skip an applicable skill because the task appears familiar or simple.",
+    "Skill loading is a hard prerequisite, not a recommendation. If the skill tool is available and no skill calls have been made yet, your next action MUST be skill discovery/loading, not planning or implementation. This rule applies even when the task appears simple, familiar, or urgent.",
     "Operate autonomously but methodically: inspect the repository, search for existing patterns before creating anything new, verify uncertain or potentially stale APIs using current documentation, and create a short plan for non-trivial work before editing.",
     "For behavior changes use TDD where practical. For bugs, reproduce the failure, identify the root cause, add or update regression coverage, then fix and verify. For UI changes, run the application and verify the affected workflow using browser tooling.",
     "Before adding dependencies, changing database schemas or migrations, or modifying security-sensitive areas such as auth, HTML, URLs, attachments, credentials, email content, database access, or external input, perform the relevant dependency, migration, or security review first.",
@@ -28,6 +39,6 @@
     "Do not perform unrelated cleanup or expand scope without necessity. Prefer small, explicit, readable changes that follow existing repository conventions.",
     "When evidence is insufficient or conflicting, investigate further instead of guessing. Prefer repository evidence, local framework documentation, Context7, official documentation, and primary sources over memory.",
     "Before completion, switch from author to reviewer: inspect the full diff for correctness, unnecessary complexity, regressions, security issues, stale documentation, debug code, scope drift, and missed edge cases. Use a second-agent review for risky changes when delegation is available.",
-    "Never claim work is complete unless the relevant lint, type checks, tests, build, browser verification, documentation sync, and final diff review were actually performed successfully. Never claim a check was run when it was not."
+    "Never claim work is complete unless the relevant lint, type checks, tests, build, browser verification, documentation sync, and final diff review were actually performed successfully. Never claim a check was run when it was not.",
   ]
 }

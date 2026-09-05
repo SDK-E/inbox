@@ -5,22 +5,22 @@ paths:
       operationId: createOrganizationApiKey
       x-internal: false
       x-api-client: widgets
-      summary: ''
+      summary: ""
       parameters: []
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateOrganizationApiKeyRequest'
+              $ref: "#/components/schemas/CreateOrganizationApiKeyRequest"
       responses:
-        '201':
+        "201":
           description: Created
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreateOrganizationApiKeyResponse'
-        '400':
+                $ref: "#/components/schemas/CreateOrganizationApiKeyResponse"
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -31,7 +31,7 @@ paths:
                     type: string
                 required:
                   - message
-        '403':
+        "403":
           description: Forbidden
           content:
             application/json:
@@ -42,7 +42,7 @@ paths:
                     type: string
                 required:
                   - message
-        '404':
+        "404":
           description: Not Found
           content:
             application/json:
@@ -53,7 +53,7 @@ paths:
                     type: string
                 required:
                   - message
-        '422':
+        "422":
           description: Unprocessable Entity
           content:
             application/json:
@@ -81,7 +81,7 @@ paths:
       operationId: listOrganizationApiKeys
       x-internal: false
       x-api-client: widgets
-      summary: ''
+      summary: ""
       parameters:
         - name: limit
           required: false
@@ -104,13 +104,13 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListOrganizationApiKeysResponse'
-        '400':
+                $ref: "#/components/schemas/ListOrganizationApiKeysResponse"
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -121,7 +121,7 @@ paths:
                     type: string
                 required:
                   - message
-        '403':
+        "403":
           description: Forbidden
           content:
             application/json:
@@ -137,7 +137,7 @@ paths:
       operationId: listOrganizationApiKeyPermissions
       x-internal: false
       x-api-client: widgets
-      summary: ''
+      summary: ""
       parameters:
         - name: search
           required: false
@@ -160,13 +160,13 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListOrganizationApiKeyPermissionsResponse'
-        '400':
+                $ref: "#/components/schemas/ListOrganizationApiKeyPermissionsResponse"
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -177,7 +177,7 @@ paths:
                     type: string
                 required:
                   - message
-        '403':
+        "403":
           description: Forbidden
           content:
             application/json:
@@ -193,7 +193,7 @@ paths:
       operationId: deleteOrganizationApiKey
       x-internal: false
       x-api-client: widgets
-      summary: ''
+      summary: ""
       parameters:
         - name: apiKeyId
           required: true
@@ -201,7 +201,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -212,7 +212,7 @@ paths:
                     type: boolean
                 required:
                   - success
-        '403':
+        "403":
           description: Forbidden
           content:
             application/json:
@@ -223,7 +223,7 @@ paths:
                     type: string
                 required:
                   - message
-        '404':
+        "404":
           description: Not Found
           content:
             application/json:
@@ -239,7 +239,7 @@ paths:
       operationId: deleteDataInstallation
       x-internal: false
       x-api-client: widgets
-      summary: ''
+      summary: ""
       parameters:
         - name: installationId
           required: true
@@ -247,7 +247,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -258,7 +258,7 @@ paths:
                     type: boolean
                 required:
                   - success
-        '403':
+        "403":
           description: Forbidden
           content:
             application/json:
@@ -269,7 +269,7 @@ paths:
                     type: string
                 required:
                   - message
-        '404':
+        "404":
           description: Not Found
           content:
             application/json:
@@ -285,16 +285,16 @@ paths:
       operationId: myDataIntegrations
       x-internal: false
       x-api-client: widgets
-      summary: ''
+      summary: ""
       parameters: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DataIntegrationsResponse'
-        '403':
+                $ref: "#/components/schemas/DataIntegrationsResponse"
+        "403":
           description: Forbidden
           content:
             application/json:
@@ -310,7 +310,7 @@ paths:
       operationId: getDataInstallationAuthorizationStatus
       x-internal: false
       x-api-client: widgets
-      summary: ''
+      summary: ""
       parameters:
         - name: dataIntegrationId
           required: true
@@ -323,13 +323,13 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetAuthorizationStatusResponse'
-        '400':
+                $ref: "#/components/schemas/GetAuthorizationStatusResponse"
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -340,7 +340,7 @@ paths:
                     type: string
                 required:
                   - message
-        '403':
+        "403":
           description: Forbidden
           content:
             application/json:
@@ -351,7 +351,7 @@ paths:
                     type: string
                 required:
                   - message
-        '404':
+        "404":
           description: Not Found
           content:
             application/json:
@@ -367,7 +367,7 @@ paths:
       operationId: getDataIntegrationAuthorizeUrl
       x-internal: false
       x-api-client: widgets
-      summary: ''
+      summary: ""
       parameters:
         - name: slug
           required: true
@@ -380,13 +380,13 @@ paths:
           schema:
             type: boolean
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetDataIntegrationAuthorizeUrlResponse'
-        '400':
+                $ref: "#/components/schemas/GetDataIntegrationAuthorizeUrlResponse"
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -397,7 +397,7 @@ paths:
                     type: string
                 required:
                   - message
-        '403':
+        "403":
           description: Forbidden
           content:
             application/json:
@@ -408,7 +408,7 @@ paths:
                     type: string
                 required:
                   - message
-        '404':
+        "404":
           description: Not Found
           content:
             application/json:
@@ -424,7 +424,7 @@ paths:
       operationId: inviteMember
       x-internal: false
       x-api-client: widgets
-      summary: ''
+      summary: ""
       description: >-
         Sends an invitation email to a user to join the organization. If the
         user does not have an account, they will be prompted to create one upon
@@ -442,11 +442,11 @@ paths:
                 firstName:
                   type:
                     - string
-                    - 'null'
+                    - "null"
                 lastName:
                   type:
                     - string
-                    - 'null'
+                    - "null"
                 roles:
                   type: array
                   items:
@@ -455,7 +455,7 @@ paths:
                 - email
                 - roles
       responses:
-        '201':
+        "201":
           description: Created
           content:
             application/json:
@@ -466,7 +466,7 @@ paths:
                     type: boolean
                 required:
                   - success
-        '400':
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -477,7 +477,7 @@ paths:
                     type: string
                 required:
                   - message
-        '403':
+        "403":
           description: Forbidden
           content:
             application/json:
@@ -488,7 +488,7 @@ paths:
                     type: string
                 required:
                   - message
-        '404':
+        "404":
           description: Not Found
           content:
             application/json:
@@ -504,7 +504,7 @@ paths:
       operationId: revokeInvite
       x-internal: false
       x-api-client: widgets
-      summary: ''
+      summary: ""
       description: >-
         Cancels a pending invitation for the specified user, preventing them
         from joining the organization via that invite link.
@@ -515,7 +515,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -529,7 +529,7 @@ paths:
                 required:
                   - id
                   - success
-        '400':
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -540,7 +540,7 @@ paths:
                     type: string
                 required:
                   - message
-        '403':
+        "403":
           description: Forbidden
           content:
             application/json:
@@ -551,7 +551,7 @@ paths:
                     type: string
                 required:
                   - message
-        '404':
+        "404":
           description: Not Found
           content:
             application/json:
@@ -567,7 +567,7 @@ paths:
       operationId: resendInvite
       x-internal: false
       x-api-client: widgets
-      summary: ''
+      summary: ""
       description: >-
         Resends the pending invitation email to the specified user. Returns an
         error if the invitation has already been accepted or has expired.
@@ -578,7 +578,7 @@ paths:
           schema:
             type: string
       responses:
-        '201':
+        "201":
           description: Created
           content:
             application/json:
@@ -588,12 +588,12 @@ paths:
                   id:
                     type:
                       - string
-                      - 'null'
+                      - "null"
                   success:
                     type: boolean
                 required:
                   - success
-        '400':
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -604,7 +604,7 @@ paths:
                     type: string
                 required:
                   - message
-        '403':
+        "403":
           description: Forbidden
           content:
             application/json:
@@ -615,7 +615,7 @@ paths:
                     type: string
                 required:
                   - message
-        '404':
+        "404":
           description: Not Found
           content:
             application/json:
@@ -626,7 +626,7 @@ paths:
                     type: string
                 required:
                   - message
-        '422':
+        "422":
           description: Unprocessable Entity
           content:
             application/json:
@@ -642,7 +642,7 @@ paths:
       operationId: members
       x-internal: false
       x-api-client: widgets
-      summary: ''
+      summary: ""
       description: >-
         Returns a paginated list of members belonging to the organization.
         Supports filtering by search term and role, and cursor-based pagination
@@ -674,7 +674,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -684,13 +684,13 @@ paths:
                   data:
                     type: array
                     items:
-                      $ref: '#/components/schemas/Member'
+                      $ref: "#/components/schemas/Member"
                   list_metadata:
-                    $ref: '#/components/schemas/ListMetadata'
+                    $ref: "#/components/schemas/ListMetadata"
                 required:
                   - data
                   - list_metadata
-        '403':
+        "403":
           description: Forbidden
           content:
             application/json:
@@ -701,7 +701,7 @@ paths:
                     type: string
                 required:
                   - message
-        '404':
+        "404":
           description: Not Found
           content:
             application/json:
@@ -717,7 +717,7 @@ paths:
       operationId: removeMember
       x-internal: false
       x-api-client: widgets
-      summary: ''
+      summary: ""
       description: >-
         Removes the specified user from the organization by revoking their
         membership. The user account itself is not deleted.
@@ -728,7 +728,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -742,7 +742,7 @@ paths:
                 required:
                   - id
                   - success
-        '400':
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -753,7 +753,7 @@ paths:
                     type: string
                 required:
                   - message
-        '403':
+        "403":
           description: Forbidden
           content:
             application/json:
@@ -764,7 +764,7 @@ paths:
                     type: string
                 required:
                   - message
-        '404':
+        "404":
           description: Not Found
           content:
             application/json:
@@ -779,7 +779,7 @@ paths:
       operationId: updateMember
       x-internal: false
       x-api-client: widgets
-      summary: ''
+      summary: ""
       description: >-
         Updates the specified member's organization membership, such as changing
         their assigned role.
@@ -803,7 +803,7 @@ paths:
               required:
                 - roles
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -817,7 +817,7 @@ paths:
                 required:
                   - id
                   - success
-        '400':
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -828,7 +828,7 @@ paths:
                     type: string
                 required:
                   - message
-        '403':
+        "403":
           description: Forbidden
           content:
             application/json:
@@ -839,7 +839,7 @@ paths:
                     type: string
                 required:
                   - message
-        '404':
+        "404":
           description: Not Found
           content:
             application/json:
@@ -850,7 +850,7 @@ paths:
                     type: string
                 required:
                   - message
-        '422':
+        "422":
           description: Unprocessable Entity
           content:
             application/json:
@@ -866,17 +866,17 @@ paths:
       operationId: organizations
       x-internal: false
       x-api-client: widgets
-      summary: ''
+      summary: ""
       description: Returns the list of organizations the authenticated user is a member of.
       parameters: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/OrganizationsResponse'
-        '403':
+                $ref: "#/components/schemas/OrganizationsResponse"
+        "403":
           description: Forbidden
           content:
             application/json:
@@ -887,7 +887,7 @@ paths:
                     type: string
                 required:
                   - message
-        '404':
+        "404":
           description: Not Found
           content:
             application/json:
@@ -903,21 +903,21 @@ paths:
       operationId: roles
       x-internal: false
       x-api-client: widgets
-      summary: ''
+      summary: ""
       description: >-
         Returns the list of roles available in the organization that can be
         assigned to members.
       parameters: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/MemberRole'
-        '403':
+                  $ref: "#/components/schemas/MemberRole"
+        "403":
           description: Forbidden
           content:
             application/json:
@@ -928,7 +928,7 @@ paths:
                     type: string
                 required:
                   - message
-        '404':
+        "404":
           description: Not Found
           content:
             application/json:
@@ -944,20 +944,20 @@ paths:
       operationId: rolesAndConfig
       x-internal: false
       x-api-client: widgets
-      summary: ''
+      summary: ""
       description: >-
         Returns the list of roles available in the organization along with the
         user management configuration, such as whether role assignment is
         enabled.
       parameters: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RolesAndConfigResponse'
-        '403':
+                $ref: "#/components/schemas/RolesAndConfigResponse"
+        "403":
           description: Forbidden
           content:
             application/json:
@@ -968,7 +968,7 @@ paths:
                     type: string
                 required:
                   - message
-        '404':
+        "404":
           description: Not Found
           content:
             application/json:
@@ -984,19 +984,19 @@ paths:
       operationId: authenticationInformation
       x-internal: false
       x-api-client: widgets
-      summary: ''
+      summary: ""
       description: >-
         Returns the authentication methods and MFA factors configured for the
         authenticated user, including enrolled TOTP factors and passkeys.
       parameters: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AuthenticationInformationResponse'
-        '403':
+                $ref: "#/components/schemas/AuthenticationInformationResponse"
+        "403":
           description: Forbidden
           content:
             application/json:
@@ -1012,7 +1012,7 @@ paths:
       operationId: createPassword
       x-internal: false
       x-api-client: widgets
-      summary: ''
+      summary: ""
       description: >-
         Sets a password for the authenticated user. Only available when the user
         does not already have a password configured. Requires elevated access.
@@ -1022,9 +1022,9 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreatePasswordRequest'
+              $ref: "#/components/schemas/CreatePasswordRequest"
       responses:
-        '201':
+        "201":
           description: Created
           content:
             application/json:
@@ -1035,7 +1035,7 @@ paths:
                     type: boolean
                 required:
                   - success
-        '400':
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -1046,7 +1046,7 @@ paths:
                     type: string
                 required:
                   - message
-        '403':
+        "403":
           description: Forbidden
           content:
             application/json:
@@ -1062,19 +1062,19 @@ paths:
       operationId: createTotpFactor
       x-internal: false
       x-api-client: widgets
-      summary: ''
+      summary: ""
       description: >-
         Initiates TOTP (authenticator app) enrollment for the authenticated user
         by generating a new TOTP secret and QR code. Requires elevated access.
       parameters: []
       responses:
-        '201':
+        "201":
           description: Created
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreateTotpFactorResponse'
-        '400':
+                $ref: "#/components/schemas/CreateTotpFactorResponse"
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -1085,7 +1085,7 @@ paths:
                     type: string
                 required:
                   - message
-        '403':
+        "403":
           description: Forbidden
           content:
             application/json:
@@ -1101,19 +1101,19 @@ paths:
       operationId: me
       x-internal: false
       x-api-client: widgets
-      summary: ''
+      summary: ""
       description: >-
         Returns the profile information of the currently authenticated user,
         including their name, email, and linked authentication factors.
       parameters: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Me'
-        '403':
+                $ref: "#/components/schemas/Me"
+        "403":
           description: Forbidden
           content:
             application/json:
@@ -1128,7 +1128,7 @@ paths:
       operationId: updateMe
       x-internal: false
       x-api-client: widgets
-      summary: ''
+      summary: ""
       description: >-
         Updates the profile information of the currently authenticated user,
         such as their first name, last name, or email address.
@@ -1147,13 +1147,13 @@ paths:
                 locale:
                   type: string
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Me'
-        '400':
+                $ref: "#/components/schemas/Me"
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -1164,7 +1164,7 @@ paths:
                     type: string
                 required:
                   - message
-        '403':
+        "403":
           description: Forbidden
           content:
             application/json:
@@ -1180,19 +1180,19 @@ paths:
       operationId: registerPasskey
       x-internal: false
       x-api-client: widgets
-      summary: ''
+      summary: ""
       description: >-
         Initiates passkey (WebAuthn) registration for the authenticated user by
         returning the credential creation options. Requires elevated access.
       parameters: []
       responses:
-        '201':
+        "201":
           description: Created
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RegisterPasskeyResponse'
-        '400':
+                $ref: "#/components/schemas/RegisterPasskeyResponse"
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -1203,7 +1203,7 @@ paths:
                     type: string
                 required:
                   - message
-        '403':
+        "403":
           description: Forbidden
           content:
             application/json:
@@ -1219,7 +1219,7 @@ paths:
       operationId: verifyPasskey
       x-internal: false
       x-api-client: widgets
-      summary: ''
+      summary: ""
       description: >-
         Completes passkey (WebAuthn) registration by verifying the credential
         created by the authenticator. Requires elevated access.
@@ -1229,9 +1229,9 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/VerifyPasskeyRequest'
+              $ref: "#/components/schemas/VerifyPasskeyRequest"
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -1242,7 +1242,7 @@ paths:
                     type: boolean
                 required:
                   - success
-        '400':
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -1253,7 +1253,7 @@ paths:
                     type: string
                 required:
                   - message
-        '403':
+        "403":
           description: Forbidden
           content:
             application/json:
@@ -1269,7 +1269,7 @@ paths:
       operationId: deletePasskey
       x-internal: false
       x-api-client: widgets
-      summary: ''
+      summary: ""
       description: >-
         Removes the specified passkey from the authenticated user's account.
         Requires elevated access.
@@ -1280,7 +1280,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -1291,7 +1291,7 @@ paths:
                     type: boolean
                 required:
                   - success
-        '400':
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -1302,7 +1302,7 @@ paths:
                     type: string
                 required:
                   - message
-        '403':
+        "403":
           description: Forbidden
           content:
             application/json:
@@ -1318,19 +1318,19 @@ paths:
       operationId: sendVerification
       x-internal: false
       x-api-client: widgets
-      summary: ''
+      summary: ""
       description: >-
         Sends a verification email to the authenticated user to confirm their
         email address.
       parameters: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SendVerificationResponse'
-        '400':
+                $ref: "#/components/schemas/SendVerificationResponse"
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -1341,7 +1341,7 @@ paths:
                     type: string
                 required:
                   - message
-        '403':
+        "403":
           description: Forbidden
           content:
             application/json:
@@ -1357,19 +1357,19 @@ paths:
       operationId: sessions
       x-internal: false
       x-api-client: widgets
-      summary: ''
+      summary: ""
       description: >-
         Returns all currently active sessions for the authenticated user,
         including device and location information where available.
       parameters: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ActiveSessionsResponse'
-        '403':
+                $ref: "#/components/schemas/ActiveSessionsResponse"
+        "403":
           description: Forbidden
           content:
             application/json:
@@ -1385,7 +1385,7 @@ paths:
       operationId: revokeAllSessions
       x-internal: false
       x-api-client: widgets
-      summary: ''
+      summary: ""
       description: >-
         Revokes all active sessions for the authenticated user except optionally
         the current one, signing them out of all other devices.
@@ -1395,9 +1395,9 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RevokeAllSessionsRequest'
+              $ref: "#/components/schemas/RevokeAllSessionsRequest"
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -1408,7 +1408,7 @@ paths:
                     type: boolean
                 required:
                   - success
-        '400':
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -1419,7 +1419,7 @@ paths:
                     type: string
                 required:
                   - message
-        '403':
+        "403":
           description: Forbidden
           content:
             application/json:
@@ -1435,7 +1435,7 @@ paths:
       operationId: revokeSession
       x-internal: false
       x-api-client: widgets
-      summary: ''
+      summary: ""
       description: >-
         Revokes a specific active session by ID, signing the user out of that
         particular device or browser.
@@ -1446,7 +1446,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -1457,7 +1457,7 @@ paths:
                     type: boolean
                 required:
                   - success
-        '400':
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -1468,7 +1468,7 @@ paths:
                     type: string
                 required:
                   - message
-        '403':
+        "403":
           description: Forbidden
           content:
             application/json:
@@ -1484,13 +1484,13 @@ paths:
       operationId: deleteTotpFactors
       x-internal: false
       x-api-client: widgets
-      summary: ''
+      summary: ""
       description: >-
         Removes all TOTP factors enrolled for the authenticated user, disabling
         authenticator app as a second factor. Requires elevated access.
       parameters: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -1501,7 +1501,7 @@ paths:
                     type: boolean
                 required:
                   - success
-        '400':
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -1512,7 +1512,7 @@ paths:
                     type: string
                 required:
                   - message
-        '403':
+        "403":
           description: Forbidden
           content:
             application/json:
@@ -1528,7 +1528,7 @@ paths:
       operationId: updatePassword
       x-internal: false
       x-api-client: widgets
-      summary: ''
+      summary: ""
       description: >-
         Changes the password for the authenticated user. Requires the current
         password to be supplied alongside the new password.
@@ -1538,9 +1538,9 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdatePasswordRequest'
+              $ref: "#/components/schemas/UpdatePasswordRequest"
       responses:
-        '201':
+        "201":
           description: Created
           content:
             application/json:
@@ -1551,7 +1551,7 @@ paths:
                     type: boolean
                 required:
                   - success
-        '400':
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -1562,7 +1562,7 @@ paths:
                     type: string
                 required:
                   - message
-        '403':
+        "403":
           description: Forbidden
           content:
             application/json:
@@ -1578,7 +1578,7 @@ paths:
       operationId: verify
       x-internal: false
       x-api-client: widgets
-      summary: ''
+      summary: ""
       description: >-
         Verifies the email address of the authenticated user using the code sent
         via the send-verification endpoint. On success, returns an elevated
@@ -1590,15 +1590,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/VerifyRequest'
+              $ref: "#/components/schemas/VerifyRequest"
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/VerifyResponse'
-        '400':
+                $ref: "#/components/schemas/VerifyResponse"
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -1609,7 +1609,7 @@ paths:
                     type: string
                 required:
                   - message
-        '403':
+        "403":
           description: Forbidden
           content:
             application/json:
@@ -1625,7 +1625,7 @@ paths:
       operationId: verifyTotpFactor
       x-internal: false
       x-api-client: widgets
-      summary: ''
+      summary: ""
       description: >-
         Completes TOTP enrollment by verifying the one-time code generated by
         the authenticator app. Requires elevated access.
@@ -1635,9 +1635,9 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/VerifyTotpFactorRequest'
+              $ref: "#/components/schemas/VerifyTotpFactorRequest"
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -1648,7 +1648,7 @@ paths:
                     type: boolean
                 required:
                   - success
-        '400':
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -1659,7 +1659,7 @@ paths:
                     type: string
                 required:
                   - message
-        '403':
+        "403":
           description: Forbidden
           content:
             application/json:
@@ -1675,7 +1675,7 @@ paths:
       operationId: generateAdminPortalLink
       x-internal: false
       x-api-client: widgets
-      summary: ''
+      summary: ""
       parameters:
         - name: intent
           required: true
@@ -1686,7 +1686,7 @@ paths:
               - sso
             type: string
       responses:
-        '201':
+        "201":
           description: Created
           content:
             application/json:
@@ -1697,7 +1697,7 @@ paths:
                     type: string
                 required:
                   - link
-        '403':
+        "403":
           description: Forbidden
           content:
             application/json:
@@ -1708,7 +1708,7 @@ paths:
                     type: string
                 required:
                   - message
-        '404':
+        "404":
           description: Not Found
           content:
             application/json:
@@ -1719,8 +1719,8 @@ paths:
                     type: string
                 required:
                   - message
-        '500':
-          description: ''
+        "500":
+          description: ""
           content:
             application/json:
               schema:
@@ -1735,10 +1735,10 @@ paths:
       operationId: listOrganizationDomains
       x-internal: false
       x-api-client: widgets
-      summary: ''
+      summary: ""
       parameters: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
@@ -1748,10 +1748,10 @@ paths:
                   data:
                     type: array
                     items:
-                      $ref: '#/components/schemas/OrganizationDomain'
+                      $ref: "#/components/schemas/OrganizationDomain"
                 required:
                   - data
-        '403':
+        "403":
           description: Forbidden
           content:
             application/json:
@@ -1762,7 +1762,7 @@ paths:
                     type: string
                 required:
                   - message
-        '404':
+        "404":
           description: Not Found
           content:
             application/json:
@@ -1778,7 +1778,7 @@ paths:
       operationId: deleteOrganizationDomain
       x-internal: false
       x-api-client: widgets
-      summary: ''
+      summary: ""
       parameters:
         - name: domainId
           required: true
@@ -1786,13 +1786,13 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/OrganizationDomain'
-        '403':
+                $ref: "#/components/schemas/OrganizationDomain"
+        "403":
           description: Forbidden
           content:
             application/json:
@@ -1803,7 +1803,7 @@ paths:
                     type: string
                 required:
                   - message
-        '404':
+        "404":
           description: Not Found
           content:
             application/json:
@@ -1819,7 +1819,7 @@ paths:
       operationId: reverifyOrganizationDomain
       x-internal: false
       x-api-client: widgets
-      summary: ''
+      summary: ""
       parameters:
         - name: domainId
           required: true
@@ -1827,13 +1827,13 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/OrganizationDomain'
-        '403':
+                $ref: "#/components/schemas/OrganizationDomain"
+        "403":
           description: Forbidden
           content:
             application/json:
@@ -1844,7 +1844,7 @@ paths:
                     type: string
                 required:
                   - message
-        '404':
+        "404":
           description: Not Found
           content:
             application/json:
@@ -1860,32 +1860,32 @@ paths:
       operationId: listSsoConnections
       x-internal: false
       x-api-client: widgets
-      summary: ''
+      summary: ""
       parameters: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/SsoConnection'
+                  $ref: "#/components/schemas/SsoConnection"
   /_widgets/directory-sync/directories:
     get:
       operationId: listDirectories
       x-internal: false
       x-api-client: widgets
-      summary: ''
+      summary: ""
       parameters: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DirectoriesResponse'
-        '403':
+                $ref: "#/components/schemas/DirectoriesResponse"
+        "403":
           description: Forbidden
           content:
             application/json:
@@ -1896,7 +1896,7 @@ paths:
                     type: string
                 required:
                   - message
-        '404':
+        "404":
           description: Not Found
           content:
             application/json:
@@ -1912,7 +1912,7 @@ paths:
       operationId: getDirectory
       x-internal: false
       x-api-client: widgets
-      summary: ''
+      summary: ""
       parameters:
         - name: directoryId
           required: true
@@ -1920,13 +1920,13 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Directory'
-        '403':
+                $ref: "#/components/schemas/Directory"
+        "403":
           description: Forbidden
           content:
             application/json:
@@ -1937,7 +1937,7 @@ paths:
                     type: string
                 required:
                   - message
-        '404':
+        "404":
           description: Not Found
           content:
             application/json:
@@ -1953,19 +1953,19 @@ paths:
       operationId: settings
       x-internal: false
       x-api-client: widgets
-      summary: ''
+      summary: ""
       description: >-
         Returns the widget settings for the current environment, including
         enabled authentication methods and branding configuration.
       parameters: []
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SettingsResponse'
-        '403':
+                $ref: "#/components/schemas/SettingsResponse"
+        "403":
           description: Forbidden
           content:
             application/json:
@@ -1979,7 +1979,7 @@ paths:
 info:
   title: WorkOS Widgets
   description: WorkOS Widgets API
-  version: '1.0'
+  version: "1.0"
   contact: {}
 tags: []
 servers:
@@ -2023,34 +2023,34 @@ components:
         profilePictureUrl:
           type:
             - string
-            - 'null'
+            - "null"
         firstName:
           type:
             - string
-            - 'null'
+            - "null"
         lastName:
           type:
             - string
-            - 'null'
+            - "null"
         createdAt:
           format: date-time
           type: string
           description: An ISO 8601 timestamp.
-          example: '2026-01-15T12:00:00.000Z'
+          example: "2026-01-15T12:00:00.000Z"
         lastActivityAt:
           type:
             - string
-            - 'null'
+            - "null"
           format: date-time
         status:
-          $ref: '#/components/schemas/MemberStatus'
+          $ref: "#/components/schemas/MemberStatus"
         actions:
-          $ref: '#/components/schemas/MemberActions'
+          $ref: "#/components/schemas/MemberActions"
         isLoggedInUser:
           oneOf:
             - type: boolean
               const: true
-            - type: 'null'
+            - type: "null"
         roles:
           oneOf:
             - type: array
@@ -2064,11 +2064,11 @@ components:
                   description:
                     type:
                       - string
-                      - 'null'
+                      - "null"
                 required:
                   - name
                   - slug
-            - type: 'null'
+            - type: "null"
       required:
         - id
         - email
@@ -2082,7 +2082,7 @@ components:
         before:
           type:
             - string
-            - 'null'
+            - "null"
           description: >-
             An object ID that defines your place in the list. When the ID is not
             present, you are at the start of the list.
@@ -2090,7 +2090,7 @@ components:
         after:
           type:
             - string
-            - 'null'
+            - "null"
           description: >-
             An object ID that defines your place in the list. When the ID is not
             present, you are at the end of the list.
@@ -2110,7 +2110,7 @@ components:
         description:
           type:
             - string
-            - 'null'
+            - "null"
       required:
         - name
         - slug
@@ -2121,7 +2121,7 @@ components:
         roles:
           type: array
           items:
-            $ref: '#/components/schemas/MemberRole'
+            $ref: "#/components/schemas/MemberRole"
         multipleRolesEnabled:
           type: boolean
       required:
@@ -2139,7 +2139,7 @@ components:
         favicon:
           type:
             - string
-            - 'null'
+            - "null"
       required:
         - id
         - name
@@ -2150,7 +2150,7 @@ components:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/OrganizationInfo'
+            $ref: "#/components/schemas/OrganizationInfo"
       required:
         - data
     OAuthProfile:
@@ -2161,23 +2161,23 @@ components:
         email:
           type:
             - string
-            - 'null'
+            - "null"
         firstName:
           type:
             - string
-            - 'null'
+            - "null"
         lastName:
           type:
             - string
-            - 'null'
+            - "null"
         profilePictureUrl:
           type:
             - string
-            - 'null'
+            - "null"
         lastLoginAt:
           type:
             - string
-            - 'null'
+            - "null"
           format: date-time
       required:
         - id
@@ -2191,32 +2191,32 @@ components:
         firstName:
           type:
             - string
-            - 'null'
+            - "null"
         lastName:
           type:
             - string
-            - 'null'
+            - "null"
         locale:
           type:
             - string
-            - 'null'
+            - "null"
         profilePictureUrl:
           type:
             - string
-            - 'null'
+            - "null"
         oauthProfiles:
           oneOf:
             - type: object
               properties:
                 AppleOAuth:
-                  $ref: '#/components/schemas/OAuthProfile'
+                  $ref: "#/components/schemas/OAuthProfile"
                 GithubOAuth:
-                  $ref: '#/components/schemas/OAuthProfile'
+                  $ref: "#/components/schemas/OAuthProfile"
                 GoogleOAuth:
-                  $ref: '#/components/schemas/OAuthProfile'
+                  $ref: "#/components/schemas/OAuthProfile"
                 MicrosoftOAuth:
-                  $ref: '#/components/schemas/OAuthProfile'
-            - type: 'null'
+                  $ref: "#/components/schemas/OAuthProfile"
+            - type: "null"
       required:
         - id
         - email
@@ -2243,7 +2243,7 @@ components:
                 user_id:
                   type:
                     - string
-                    - 'null'
+                    - "null"
                 sms:
                   oneOf:
                     - type: object
@@ -2252,7 +2252,7 @@ components:
                           type: string
                       required:
                         - phone_number
-                    - type: 'null'
+                    - type: "null"
                 totp:
                   anyOf:
                     - type: object
@@ -2282,7 +2282,7 @@ components:
                       required:
                         - issuer
                         - user
-                    - type: 'null'
+                    - type: "null"
               required:
                 - object
                 - id
@@ -2311,12 +2311,12 @@ components:
                 expires_at:
                   type:
                     - string
-                    - 'null'
+                    - "null"
                   format: date-time
                 code:
                   type:
                     - string
-                    - 'null'
+                    - "null"
                 authentication_factor_id:
                   type: string
               required:
@@ -2369,11 +2369,11 @@ components:
                         lastUsed:
                           type:
                             - string
-                            - 'null'
+                            - "null"
                       required:
                         - provider
                         - isSetUp
-                    - type: 'null'
+                    - type: "null"
                 Password:
                   oneOf:
                     - type: object
@@ -2387,14 +2387,14 @@ components:
                         lastUsed:
                           type:
                             - string
-                            - 'null'
+                            - "null"
                         isCurrentSession:
                           type: boolean
                       required:
                         - provider
                         - isSetUp
                         - isCurrentSession
-                    - type: 'null'
+                    - type: "null"
                 Passkey:
                   oneOf:
                     - type: object
@@ -2408,7 +2408,7 @@ components:
                         lastUsed:
                           type:
                             - string
-                            - 'null'
+                            - "null"
                         passKeys:
                           type: array
                           items:
@@ -2425,7 +2425,7 @@ components:
                         - isSetUp
                         - passKeys
                         - isCurrentSession
-                    - type: 'null'
+                    - type: "null"
             passwordSettings:
               type: object
               properties:
@@ -2487,15 +2487,15 @@ components:
         ipAddress:
           type:
             - string
-            - 'null'
+            - "null"
         userAgent:
           type:
             - string
-            - 'null'
+            - "null"
         organizationId:
           type:
             - string
-            - 'null'
+            - "null"
         state:
           type: object
           properties:
@@ -2504,7 +2504,7 @@ components:
             expiresAt:
               type:
                 - string
-                - 'null'
+                - "null"
               format: date-time
           required:
             - tag
@@ -2519,7 +2519,7 @@ components:
               required:
                 - cityName
                 - countryISOCode
-            - type: 'null'
+            - type: "null"
         usedSsoAuth:
           type: boolean
         usedPasswordAuth:
@@ -2551,19 +2551,19 @@ components:
         impersonatorUserId:
           type:
             - string
-            - 'null'
+            - "null"
         impersonatorEmail:
           type:
             - string
-            - 'null'
+            - "null"
         impersonationReason:
           type:
             - string
-            - 'null'
+            - "null"
         lastActivityAt:
           type:
             - string
-            - 'null'
+            - "null"
           format: date-time
         createdAt:
           type: string
@@ -2597,7 +2597,7 @@ components:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/ActiveSession'
+            $ref: "#/components/schemas/ActiveSession"
       required:
         - data
     SendVerificationResponse:
@@ -2664,19 +2664,19 @@ components:
         logoDarkIconPath:
           type:
             - string
-            - 'null'
+            - "null"
         logoDarkPath:
           type:
             - string
-            - 'null'
+            - "null"
         logoLightIconPath:
           type:
             - string
-            - 'null'
+            - "null"
         logoLightPath:
           type:
             - string
-            - 'null'
+            - "null"
         teamName:
           type: string
       required:
@@ -2706,21 +2706,21 @@ components:
         domain:
           type: string
         state:
-          $ref: '#/components/schemas/OrganizationDomainState'
+          $ref: "#/components/schemas/OrganizationDomainState"
         nameServer:
-          $ref: '#/components/schemas/DomainVerificationNameServer'
+          $ref: "#/components/schemas/DomainVerificationNameServer"
         verificationPrefix:
           type:
             - string
-            - 'null'
+            - "null"
         verificationToken:
           type:
             - string
-            - 'null'
+            - "null"
         subdomain:
           type:
             - string
-            - 'null'
+            - "null"
         createdAt:
           type: string
       required:
@@ -2739,15 +2739,15 @@ components:
         notBefore:
           type:
             - string
-            - 'null'
+            - "null"
         notAfter:
           type:
             - string
-            - 'null'
+            - "null"
         lastExpiryEventSentAt:
           type:
             - string
-            - 'null'
+            - "null"
       required:
         - id
         - value
@@ -2777,8 +2777,8 @@ components:
           type: string
         state:
           anyOf:
-            - $ref: '#/components/schemas/SamlSessionState'
-            - $ref: '#/components/schemas/OidcSessionState'
+            - $ref: "#/components/schemas/SamlSessionState"
+            - $ref: "#/components/schemas/OidcSessionState"
       required:
         - id
         - createdAt
@@ -2831,15 +2831,15 @@ components:
             x509Certificates:
               type: array
               items:
-                $ref: '#/components/schemas/X509CertificateJSON'
+                $ref: "#/components/schemas/X509CertificateJSON"
             latestExpiringCertificate:
               oneOf:
-                - $ref: '#/components/schemas/X509CertificateJSON'
-                - type: 'null'
+                - $ref: "#/components/schemas/X509CertificateJSON"
+                - type: "null"
             latestExpiredCertificate:
               oneOf:
-                - $ref: '#/components/schemas/X509CertificateJSON'
-                - type: 'null'
+                - $ref: "#/components/schemas/X509CertificateJSON"
+                - type: "null"
             createdAt:
               type: string
             providerTag:
@@ -2848,8 +2848,8 @@ components:
                 - Saml
             lastSession:
               oneOf:
-                - $ref: '#/components/schemas/SsoConnectionSessionJSON'
-                - type: 'null'
+                - $ref: "#/components/schemas/SsoConnectionSessionJSON"
+                - type: "null"
           required:
             - id
             - type
@@ -2891,8 +2891,8 @@ components:
                     - OpenIdConnect
                 lastSession:
                   oneOf:
-                    - $ref: '#/components/schemas/SsoConnectionSessionJSON'
-                    - type: 'null'
+                    - $ref: "#/components/schemas/SsoConnectionSessionJSON"
+                    - type: "null"
               required:
                 - id
                 - name
@@ -2903,11 +2903,11 @@ components:
             - type: object
               properties:
                 x509Certificates:
-                  type: 'null'
+                  type: "null"
                 latestExpiringCertificate:
-                  type: 'null'
+                  type: "null"
                 latestExpiredCertificate:
-                  type: 'null'
+                  type: "null"
     ListOrganizationApiKeysResponseData:
       type: object
       properties:
@@ -2922,7 +2922,7 @@ components:
         lastUsedAt:
           type:
             - string
-            - 'null'
+            - "null"
         permissions:
           type: array
           items:
@@ -2939,7 +2939,7 @@ components:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/ListOrganizationApiKeysResponseData'
+            $ref: "#/components/schemas/ListOrganizationApiKeysResponseData"
         list_metadata:
           type: object
           properties:
@@ -2998,7 +2998,7 @@ components:
         description:
           type:
             - string
-            - 'null'
+            - "null"
       required:
         - id
         - slug
@@ -3009,7 +3009,7 @@ components:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/ListOrganizationApiKeyPermission'
+            $ref: "#/components/schemas/ListOrganizationApiKeyPermission"
         list_metadata:
           type: object
           properties:
@@ -3037,11 +3037,11 @@ components:
             user_id:
               type:
                 - string
-                - 'null'
+                - "null"
             organization_id:
               type:
                 - string
-                - 'null'
+                - "null"
             scopes:
               type: array
               items:
@@ -3070,11 +3070,11 @@ components:
             userlandUserId:
               type:
                 - string
-                - 'null'
+                - "null"
             organizationId:
               type:
                 - string
-                - 'null'
+                - "null"
             createdAt:
               type: string
             updatedAt:
@@ -3093,7 +3093,7 @@ components:
         description:
           type:
             - string
-            - 'null'
+            - "null"
         slug:
           type: string
         integrationType:
@@ -3230,15 +3230,15 @@ components:
             - type: array
               items:
                 type: string
-            - type: 'null'
+            - type: "null"
         createdAt:
           type: string
         updatedAt:
           type: string
         installation:
           oneOf:
-            - $ref: '#/components/schemas/DataInstallation'
-            - type: 'null'
+            - $ref: "#/components/schemas/DataInstallation"
+            - type: "null"
       required:
         - object
         - id
@@ -3255,7 +3255,7 @@ components:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/DataIntegration'
+            $ref: "#/components/schemas/DataIntegration"
       required:
         - data
     GetDataIntegrationAuthorizeUrlResponse:
@@ -3329,7 +3329,7 @@ components:
       type: object
       properties:
         users:
-          $ref: '#/components/schemas/DirectoryUsersMetadata'
+          $ref: "#/components/schemas/DirectoryUsersMetadata"
         groups:
           type: number
       required:
@@ -3343,15 +3343,15 @@ components:
         name:
           type: string
         type:
-          $ref: '#/components/schemas/DirectoryType'
+          $ref: "#/components/schemas/DirectoryType"
         state:
-          $ref: '#/components/schemas/DirectoryState'
+          $ref: "#/components/schemas/DirectoryState"
         createdAt:
           type: string
         updatedAt:
           type: string
         metadata:
-          $ref: '#/components/schemas/DirectoryMetadata'
+          $ref: "#/components/schemas/DirectoryMetadata"
       required:
         - id
         - name
@@ -3366,7 +3366,7 @@ components:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/Directory'
+            $ref: "#/components/schemas/Directory"
         link:
           type: string
       required:

@@ -2,13 +2,13 @@
 
 ## Monorepo direction
 
-Inbox uses Turborepo with:
+Inbox uses pnpm workspaces with:
 
 ```text
-apps/
-  web/          Next.js application
+/ (project root)
+  Next.js application
 packages/
-  ui/           reusable SDK UI primitives/components
+  ui/           shadcn/ui base primitives + app UI
   db/           Drizzle schema, migrations, DB access
   utils/        genuinely shared utilities
   config/       shared tooling/config where justified

@@ -8,9 +8,12 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 <!-- END:nextjs-agent-rules -->
 
-# KiloCode Inbox — Engineering Rules
+# Inbox — Engineering Rules
 
-Stack: Next.js 16 App Router, React 19, strict TypeScript, Tailwind 4, pnpm, Neon + Drizzle, Stagehand.
+Stack: Next.js 16 App Router, React 19, strict TypeScript, Tailwind 4, pnpm, Neon + Drizzle, Playwright.
+
+Read @docs/standards/engineering.md immediately before doing anything else.
+Read @docs/standards/agent-workflow.md immediately before doing anything else.
 
 ## Commands
 
@@ -90,11 +93,14 @@ Run focused tests while working.
 
 ## UI
 
-UI work is incomplete until exercised in the running app.
+- Use shadcn CLI for all UI components: `pnpm dlx shadcn@latest add <component>`.
+- Do not hand-roll components that shadcn already provides.
+- Use semantic tokens from the preset (`bg-background`, `text-muted-foreground`, etc.). Avoid raw colors and manual dark mode overrides.
+- UI work is incomplete until exercised in the running app.
 
 For meaningful UI changes:
 
-- verify the workflow with Stagehand/browser tooling;
+- verify the workflow with Playwright/browser tooling;
 - check runtime/browser errors;
 - check relevant loading, empty, error, keyboard, responsive, and dark-mode states.
 
@@ -142,6 +148,30 @@ Never claim verification you did not actually perform.
 Before substantive work, inspect available skills and load all skills relevant to the task before planning or implementation.
 
 Do not rely on memory when an applicable skill exists.
+
+# Mandatory initialization
+
+Before planning, answering, editing files, running commands, or implementing anything:
+
+1. Discover all available skills.
+2. Determine which skills are relevant to the current task.
+3. Load every relevant skill using the skill tool.
+4. Read their instructions completely before continuing.
+5. If a skill references additional mandatory instructions, load those too.
+6. Only after this initialization may you plan or act.
+
+This is a hard prerequisite, not a recommendation.
+
+BLOCKING RULE: If no skill calls have been made yet, your next action MUST be skill discovery/loading. Do not proceed to planning, editing, commands, or implementation until skills are loaded. Skipping skill loading is prohibited even when the task appears simple, familiar, or urgent.
+
+DO NOT:
+- begin implementation before loading applicable skills;
+- rely on remembered knowledge instead of repository skills;
+- assume a skill is irrelevant without checking its description;
+- skip skill loading because the task appears simple;
+- substitute AGENTS.md instructions for the detailed skill contents.
+
+If the skill tool is available and no skill calls have been made yet, your next action MUST be skill discovery/loading, not planning or implementation.
 
 ## Knip
 

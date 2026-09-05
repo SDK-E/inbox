@@ -30,7 +30,7 @@ Inbox brings multiple email accounts into a single fast, keyboard-first workspac
 
 ## Stack
 
-Next.js 16 · React 19 · TypeScript · Tailwind CSS 4 · Neon · Drizzle · Vitest · Playwright · Stagehand
+Next.js 16 · React 19 · TypeScript · Tailwind CSS 4 · Neon · Drizzle · Vitest · Playwright
 
 ## Quick Start
 

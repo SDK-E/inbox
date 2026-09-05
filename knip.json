@@ -7,17 +7,9 @@
     ".kiro/**",
     ".kilo/**",
     ".qwen/**",
-    "packages/config/eslint/eslint.config.mjs",
-    "packages/config/prettier.config.mjs"
+    "docs/**"
   ],
-  "ignoreBinaries": ["next"],
-  "ignoreDependencies": [
-    "repomix",
-    "dependency-cruiser",
-    "tsx",
-    "@eslint/eslintrc",
-    "eslint-config-next"
-  ],
+  "ignoreDependencies": ["repomix"],
   "ignoreExportsUsedInFile": true,
   "includeEntryExports": false,
   "next": true,

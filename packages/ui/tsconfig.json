@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "rootDir": ".",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"],
+      "@inbox/ui/*": ["./src/*"],
+      "@inbox/db/*": ["../../packages/db/src/*"],
+      "@inbox/utils/*": ["../../packages/utils/src/*"],
+      "components": ["./src"],
+      "utils": ["./lib/utils"]
+    }
+  },
+  "include": ["src/**/*", "lib/**/*"]
+}

@@ -14,10 +14,12 @@
     "includeEmptyDirectories": false
   },
   "include": [
-    "apps/web/**",
+    "app/**",
+    "hooks/**",
+    "public/**",
+    "tests/**",
     "packages/**",
     "docs/**",
-    "tests/**",
     "*.ts",
     "*.tsx",
     "*.mjs",
