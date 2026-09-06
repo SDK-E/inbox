@@ -2,6 +2,7 @@
 "use client";
 
 import { Alert, AlertDescription, AlertTitle } from "@inbox/ui/ui/alert";
+import { useAuth } from "@workos-inc/authkit-nextjs/components";
 import { useState } from "react";
 
 import type { MailboxConnection } from "@inbox/db/schema";
@@ -16,6 +17,8 @@ interface MailAccountsPageClientProps {
 export function MailAccountsPageClient({
   initialAccounts,
 }: MailAccountsPageClientProps) {
+  const { user } = useAuth({ ensureSignedIn: false });
+  const userData = user as { id?: string; organizationId?: string } | null;
   const [accounts, setAccounts] =
     useState<MailboxConnection[]>(initialAccounts);
   const [isLoading, setIsLoading] = useState(false);
@@ -25,13 +28,13 @@ export function MailAccountsPageClient({
   const handleConnect = async (formData: {
     provider: string;
     email: string;
-    displayName: string;
+    displayName?: string;
     imapHost: string;
     imapPort: number;
     smtpHost: string;
     smtpPort: number;
-    oauthProvider: string;
-    password: string;
+    oauthProvider?: string;
+    password?: string;
   }) => {
     setIsLoading(true);
     setError(null);
@@ -42,8 +45,8 @@ export function MailAccountsPageClient({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          userId: "user_1",
-          organizationId: "org_1",
+          userId: userData?.id ?? "user_1",
+          organizationId: userData?.organizationId ?? "org_1",
           ...formData,
         }),
       });
