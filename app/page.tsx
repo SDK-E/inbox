@@ -3,7 +3,8 @@
 import { useAuth } from "@workos-inc/authkit-nextjs/components";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+
+import { signOutAction } from "./auth/actions";
 
 function Logo() {
   return (
@@ -31,7 +32,6 @@ function Logo() {
 
 function AuthSection() {
   const { user, loading } = useAuth({ ensureSignedIn: false });
-  const router = useRouter();
 
   if (loading) {
     return <span className="text-xs text-muted-foreground">Loading...</span>;
@@ -47,15 +47,14 @@ function AuthSection() {
         >
           Open Inbox
         </Link>
-        <button
-          type="button"
-          onClick={() => {
-            router.push("/logout");
-          }}
-          className="text-xs text-muted-foreground underline"
-        >
-          Sign out
-        </button>
+        <form action={signOutAction}>
+          <button
+            type="submit"
+            className="text-xs text-muted-foreground underline"
+          >
+            Sign out
+          </button>
+        </form>
       </div>
     );
   }

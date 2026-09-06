@@ -66,12 +66,16 @@ const DEFAULT_ITEMS: CommandPaletteItem[] = [
 interface CommandPaletteProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  search?: string;
+  onSearchChange?: (search: string) => void;
   items?: CommandPaletteItem[];
 }
 
 export function CommandPalette({
   open,
   onOpenChange,
+  search = "",
+  onSearchChange,
   items = DEFAULT_ITEMS,
 }: CommandPaletteProps) {
   return (
@@ -83,7 +87,12 @@ export function CommandPalette({
       className="sm:max-w-xl"
       showCloseButton
     >
-      <CommandPaletteContent items={items} onOpenChange={onOpenChange} />
+      <CommandPaletteContent
+        items={items}
+        onOpenChange={onOpenChange}
+        search={search}
+        onSearchChange={onSearchChange}
+      />
     </CommandDialog>
   );
 }
@@ -91,14 +100,20 @@ export function CommandPalette({
 function CommandPaletteContent({
   items,
   onOpenChange,
+  search,
+  onSearchChange,
 }: {
   items: CommandPaletteItem[];
   onOpenChange: (open: boolean) => void;
+  search: string;
+  onSearchChange?: (search: string) => void;
 }) {
-  const [search, setSearch] = React.useState("");
+  const [internalSearch, setInternalSearch] = React.useState("");
+  const activeSearch = search || internalSearch;
+  const setActiveSearch = onSearchChange || setInternalSearch;
 
   const filtered = React.useMemo(() => {
-    const trimmed = search.trim().toLowerCase();
+    const trimmed = activeSearch.trim().toLowerCase();
     if (!trimmed) return items;
 
     return items.filter(item => {
@@ -111,30 +126,51 @@ function CommandPaletteContent({
         ) ?? false;
       return matchTitle || matchDescription || matchKeywords;
     });
-  }, [search, items]);
+  }, [activeSearch, items]);
 
   const handleSelect = (item: CommandPaletteItem) => {
-    setSearch("");
+    setActiveSearch("");
     onOpenChange(false);
     item.action?.();
   };
 
   return (
+    <CommandPaletteItems
+      items={filtered}
+      onSelect={handleSelect}
+      activeSearch={activeSearch}
+      setActiveSearch={setActiveSearch}
+    />
+  );
+}
+
+function CommandPaletteItems({
+  items,
+  onSelect,
+  activeSearch,
+  setActiveSearch,
+}: {
+  items: CommandPaletteItem[];
+  onSelect: (item: CommandPaletteItem) => void;
+  activeSearch: string;
+  setActiveSearch: (search: string) => void;
+}) {
+  return (
     <>
       <CommandInput
-        value={search}
-        onValueChange={setSearch}
+        value={activeSearch}
+        onValueChange={setActiveSearch}
         placeholder="Search mail, threads, contacts, settings..."
         className="flex-1 border-0 border-b border-transparent bg-transparent text-sm outline-none placeholder:text-muted focus:border-muted"
         autoFocus
       />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
-        {filtered.map(item => (
+        {items.map(item => (
           <CommandItem
             key={item.id}
             onSelect={() => {
-              handleSelect(item);
+              onSelect(item);
             }}
             className="cursor-pointer"
           >
