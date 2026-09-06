@@ -8,6 +8,7 @@ import {
   Plus,
   Send,
   Settings,
+  SlidersHorizontal,
   Star,
   Trash2,
   Users,
@@ -39,7 +40,7 @@ const primaryNav = [
 
 const secondaryNav = [
   { href: "/dashboard/contacts", icon: Users, label: "Contacts" },
-  { href: "/dashboard/rules", icon: Settings, label: "Rules" },
+  { href: "/dashboard/rules", icon: SlidersHorizontal, label: "Rules" },
   { href: "/dashboard/settings", icon: Settings, label: "Settings" },
 ];
 
@@ -51,7 +52,11 @@ const accountFolders = [
   { href: "/dashboard/accounts/1/trash", icon: Trash2, name: "Trash" },
 ];
 
-export function AppNavigation() {
+export function AppNavigation({
+  onOpenSettings,
+}: {
+  onOpenSettings?: () => void;
+}) {
   const pathname = usePathname();
   const [accountsOpen, setAccountsOpen] = useState(false);
 
@@ -65,7 +70,7 @@ export function AppNavigation() {
         }}
         pathname={pathname}
       />
-      <SecondaryNav pathname={pathname} />
+      <SecondaryNav pathname={pathname} onOpenSettings={onOpenSettings} />
     </>
   );
 }
@@ -143,22 +148,41 @@ function AccountsSection({
   );
 }
 
-function SecondaryNav({ pathname }: { pathname: string }) {
+function SecondaryNav({
+  pathname,
+  onOpenSettings,
+}: {
+  pathname: string;
+  onOpenSettings?: () => void;
+}) {
   return (
     <SidebarGroup className="mt-auto">
       <SidebarGroupContent>
         <SidebarMenu>
-          {secondaryNav.map(item => (
-            <SidebarMenuItem key={item.href}>
-              <SidebarMenuButton
-                render={<Link href={item.href} />}
-                isActive={pathname === item.href}
-              >
-                <item.icon />
-                <span>{item.label}</span>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          ))}
+          {secondaryNav.map(item => {
+            if (item.href === "/dashboard/settings" && onOpenSettings) {
+              return (
+                <SidebarMenuItem key={item.href}>
+                  <SidebarMenuButton onClick={onOpenSettings}>
+                    <item.icon />
+                    <span>{item.label}</span>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              );
+            }
+
+            return (
+              <SidebarMenuItem key={item.href}>
+                <SidebarMenuButton
+                  render={<Link href={item.href} />}
+                  isActive={pathname === item.href}
+                >
+                  <item.icon />
+                  <span>{item.label}</span>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            );
+          })}
         </SidebarMenu>
       </SidebarGroupContent>
     </SidebarGroup>

@@ -10,6 +10,7 @@ import {
   setDefaultMailboxConnection,
   updateMailboxConnectionStatus,
 } from "@inbox/db/mail/queries";
+import { withAuth } from "@workos-inc/authkit-nextjs";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 
@@ -119,13 +120,32 @@ export async function disconnectMailAccount(id: string) {
 }
 
 export async function setDefaultMailAccount(id: string) {
-  await setDefaultMailboxConnection("user_1", id);
+  const connection = await getMailboxConnectionById(id);
+  if (!connection) {
+    throw new Error("Connection not found");
+  }
+
+  await setDefaultMailboxConnection(connection.userId, id);
   revalidatePath("/dashboard/settings");
 }
 
 export async function listMailAccounts() {
   try {
     return await getMailboxConnectionsByUserId("user_1");
+  } catch (error) {
+    if (error instanceof Error && error.message.includes("DATABASE_URL")) {
+      return [];
+    }
+    throw error;
+  }
+}
+
+export async function getCurrentUserMailAccounts() {
+  const auth = await withAuth();
+  const userId = auth.user?.id;
+  if (!userId) return [];
+  try {
+    return await getMailboxConnectionsByUserId(userId);
   } catch (error) {
     if (error instanceof Error && error.message.includes("DATABASE_URL")) {
       return [];

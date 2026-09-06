@@ -50,6 +50,13 @@ vi.mock("next/headers", () => ({
   cookies: mocks.cookies,
 }));
 
+vi.mock("@workos-inc/authkit-nextjs", () => ({
+  withAuth: vi.fn().mockResolvedValue({
+    user: { id: "user_1" },
+    organizationId: "org_1",
+  }),
+}));
+
 import {
   connectMailAccount,
   disconnectMailAccount,
