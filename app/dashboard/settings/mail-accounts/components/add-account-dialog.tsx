@@ -14,6 +14,7 @@ import {
 import { Input } from "@inbox/ui/ui/input";
 import { Plus } from "lucide-react";
 import { useState } from "react";
+import { z } from "zod";
 
 const providers = [
   {
@@ -42,17 +43,31 @@ const providers = [
   },
 ] as const;
 
+const connectSchema = z.object({
+  provider: z.string().min(1, "Provider is required"),
+  email: z.email("Invalid email address"),
+  displayName: z.string().optional(),
+  imapHost: z.string().min(1, "IMAP host is required"),
+  imapPort: z.number().int().positive().max(65535, "Invalid port"),
+  smtpHost: z.string().min(1, "SMTP host is required"),
+  smtpPort: z.number().int().positive().max(65535, "Invalid port"),
+  oauthProvider: z.string().optional(),
+  password: z.string().optional(),
+});
+
+type ConnectFormData = z.infer<typeof connectSchema>;
+
 interface AddAccountDialogProps {
   onConnect: (data: {
     provider: string;
     email: string;
-    displayName: string;
+    displayName?: string;
     imapHost: string;
     imapPort: number;
     smtpHost: string;
     smtpPort: number;
-    oauthProvider: string;
-    password: string;
+    oauthProvider?: string;
+    password?: string;
   }) => Promise<void>;
   isLoading: boolean;
 }
@@ -62,7 +77,7 @@ export function AddAccountDialog({
   isLoading,
 }: AddAccountDialogProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<ConnectFormData>({
     provider: "gmail",
     email: "",
     displayName: "",
@@ -73,6 +88,9 @@ export function AddAccountDialog({
     oauthProvider: "",
     password: "",
   });
+  const [errors, setErrors] = useState<
+    Partial<Record<keyof ConnectFormData, string>>
+  >({});
 
   const handleProviderChange = (provider: string) => {
     const providerConfig = providers.find(p => p.value === provider);
@@ -84,12 +102,25 @@ export function AddAccountDialog({
       smtpHost: providerConfig?.smtpHost ?? "",
       smtpPort: providerConfig?.smtpPort ?? 587,
     });
+    setErrors(prev => ({ ...prev, provider: undefined }));
   };
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
+    const result = connectSchema.safeParse(formData);
+    if (!result.success) {
+      const fieldErrors: Partial<Record<keyof ConnectFormData, string>> = {};
+      for (const issue of result.error.issues) {
+        const field = issue.path[0] as keyof ConnectFormData;
+        fieldErrors[field] = issue.message;
+      }
+      setErrors(fieldErrors);
+      return;
+    }
+
+    setErrors({});
     void (async () => {
-      await onConnect(formData);
+      await onConnect(result.data);
       setIsOpen(false);
       setFormData({
         provider: "gmail",
@@ -107,11 +138,9 @@ export function AddAccountDialog({
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogTrigger>
-        <Button>
-          <Plus className="size-4" data-icon="inline-start" />
-          Add Account
-        </Button>
+      <DialogTrigger render={<Button />}>
+        <Plus className="size-4" data-icon="inline-start" />
+        Add Account
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
@@ -137,6 +166,9 @@ export function AddAccountDialog({
                 </option>
               ))}
             </select>
+            {errors.provider && (
+              <p className="mt-1 text-xs text-destructive">{errors.provider}</p>
+            )}
           </div>
 
           <div>
@@ -147,8 +179,11 @@ export function AddAccountDialog({
               onChange={e => {
                 setFormData({ ...formData, email: e.target.value });
               }}
-              required
+              aria-invalid={!!errors.email}
             />
+            {errors.email && (
+              <p className="mt-1 text-xs text-destructive">{errors.email}</p>
+            )}
           </div>
 
           <div>
@@ -171,8 +206,13 @@ export function AddAccountDialog({
                 onChange={e => {
                   setFormData({ ...formData, imapHost: e.target.value });
                 }}
-                required
+                aria-invalid={!!errors.imapHost}
               />
+              {errors.imapHost && (
+                <p className="mt-1 text-xs text-destructive">
+                  {errors.imapHost}
+                </p>
+              )}
             </div>
             <div>
               <label className="text-sm font-medium">IMAP Port</label>
@@ -185,8 +225,13 @@ export function AddAccountDialog({
                     imapPort: parseInt(e.target.value),
                   });
                 }}
-                required
+                aria-invalid={!!errors.imapPort}
               />
+              {errors.imapPort && (
+                <p className="mt-1 text-xs text-destructive">
+                  {errors.imapPort}
+                </p>
+              )}
             </div>
           </div>
 
@@ -199,8 +244,13 @@ export function AddAccountDialog({
                 onChange={e => {
                   setFormData({ ...formData, smtpHost: e.target.value });
                 }}
-                required
+                aria-invalid={!!errors.smtpHost}
               />
+              {errors.smtpHost && (
+                <p className="mt-1 text-xs text-destructive">
+                  {errors.smtpHost}
+                </p>
+              )}
             </div>
             <div>
               <label className="text-sm font-medium">SMTP Port</label>
@@ -213,8 +263,13 @@ export function AddAccountDialog({
                     smtpPort: parseInt(e.target.value),
                   });
                 }}
-                required
+                aria-invalid={!!errors.smtpPort}
               />
+              {errors.smtpPort && (
+                <p className="mt-1 text-xs text-destructive">
+                  {errors.smtpPort}
+                </p>
+              )}
             </div>
           </div>
 
