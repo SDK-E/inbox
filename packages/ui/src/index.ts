@@ -8,3 +8,4 @@ export { ThemeProvider, themeScript } from "./theme-provider";
 export { TopBar } from "./top-bar";
 export type { Icon } from "./types";
 export { UserMenu } from "./user-menu";
+export { ErrorBoundary } from "./ui/error-boundary";

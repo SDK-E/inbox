@@ -11,11 +11,13 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
-  DropdownMenuItem,
   DropdownMenuLabel,
+  DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@inbox/ui/ui/dropdown-menu";
+
+import { signOutAction } from "@/app/auth/actions";
 
 interface UserMenuUser {
   email: string;
@@ -67,15 +69,30 @@ function UserMenuContent({ user }: { user: UserMenuUser }) {
       <DropdownMenuSeparator />
 
       <DropdownMenuItem>
-        <Link
-          href="/logout"
-          className="flex items-center gap-2 px-2 py-1.5 text-sm text-muted-foreground hover:bg-surface-muted hover:text-foreground focus:bg-surface-muted focus:outline-none"
-        >
-          <LogOut className="h-4 w-4" />
-          <span>Sign out</span>
-        </Link>
+        <form action={signOutAction} className="w-full">
+          <button
+            type="submit"
+            className="flex w-full items-center gap-2 px-2 py-1.5 text-sm text-muted-foreground hover:bg-surface-muted hover:text-foreground"
+          >
+            <LogOut className="h-4 w-4" />
+            <span>Sign out</span>
+          </button>
+        </form>
       </DropdownMenuItem>
     </>
+  );
+}
+
+function isValidUserMenuUser(user: unknown): user is UserMenuUser {
+  if (!user || typeof user !== "object") return false;
+  const candidate = user as Record<string, unknown>;
+  return (
+    typeof candidate["email"] === "string" &&
+    (candidate["firstName"] === null ||
+      typeof candidate["firstName"] === "string") &&
+    (candidate["lastName"] === null ||
+      typeof candidate["lastName"] === "string") &&
+    (candidate["name"] === null || typeof candidate["name"] === "string")
   );
 }
 
@@ -83,11 +100,11 @@ export function UserMenu() {
   const [open, setOpen] = useState(false);
   const { user } = useAuth({ ensureSignedIn: false });
 
-  if (!user) {
+  if (!user || !isValidUserMenuUser(user)) {
     return null;
   }
 
-  const userData = user as UserMenuUser;
+  const userData = user;
   const initials = getInitials(userData);
 
   return (
@@ -106,6 +123,7 @@ export function UserMenu() {
           <AvatarImage
             src={userData.profilePictureUrl ?? undefined}
             alt={userData.name ?? userData.email}
+            aria-hidden="true"
           />
           <AvatarFallback className="text-xs">{initials}</AvatarFallback>
         </Avatar>

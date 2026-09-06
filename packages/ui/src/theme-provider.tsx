@@ -41,13 +41,7 @@ function getSystemTheme(): ResolvedTheme {
 
 function getInitialResolvedTheme(): ResolvedTheme {
   if (typeof window === "undefined") return "light";
-  try {
-    return document.documentElement.classList.contains("dark")
-      ? "dark"
-      : "light";
-  } catch {
-    return "light";
-  }
+  return "light";
 }
 
 export function useTheme(): ThemeContextValue {
